@@ -11,7 +11,7 @@ fn main() {
         .expect("Faleur to read line !!");
     // B: explination:
     // 1 .read_line( ) will put everyting we passed on in as string + return (resualt)
-    // R: resualt is an enum (enumeration=that cna be in multyple states( variant )) just like time varient.
+    // R: resualt is an enum (enumeration=that can be in multyple states( variant )) just like time varient.
     //  resualt will return: (ok) or (Err)
     // Y: after read_line() 󰿄
     // we added -> expect() =>
