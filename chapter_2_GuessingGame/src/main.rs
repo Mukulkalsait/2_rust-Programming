@@ -1,9 +1,12 @@
+use colored::*;
 use rand::Rng;
 use std::cmp::Ordering;
 use std::{io, u32};
 
 fn main() {
-    println!("Guessing Game!");
+    println!(
+        "|--------------------------------- Guessing Game !---------------------------------|"
+    );
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
     // println!("The secret number is : {}", secret_number);
@@ -28,7 +31,9 @@ fn main() {
         //
         // G: without expect the program will give warning while compailing.
 
-        println!("your guess: {}", guess);
+        // let steatment = ("{}", "Your Guess :".red());
+        // println!(steatment "{}", guess);
+        println!("Your Guess: {}", guess);
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
@@ -39,10 +44,10 @@ fn main() {
         };
 
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too Small 🔽"),
-            Ordering::Greater => println!("Too Big 🔼"),
+            Ordering::Less => println!("{}", "Too Small 🔽".red()),
+            Ordering::Greater => println!("{}", "Too Big 🔼".red()),
             Ordering::Equal => {
-                println!("You Won !!! 💛💙🩶🩷🤍💖💛💙🩶🩷🤍💖");
+                println!("{}", "You Won !!! 💛💙🩶🩷🤍💖💛💙🩶🩷🤍💖".green());
                 break;
             }
         }
