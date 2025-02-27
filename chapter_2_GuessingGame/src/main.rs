@@ -38,32 +38,6 @@ fn main() {
             }
         };
 
-        //BASH: ther error that we purpusfully produced to crash if input is not readable.
-        //╰─ cargo run
-        //    Compiling chapter_2 v0.1.0 (/home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_2_GuessingGame)
-        // warning: unused import: `string`
-        //  --> src/main.rs:1:15
-        //   |
-        // 1 | use std::{io, string};
-        //   |               ^^^^^^
-        //   |
-        //   = note: `#[warn(unused_imports)]` on by default
-        //
-        // warning: `chapter_2` (bin "chapter_2") generated 1 warning (run `cargo fix --bin "chapter_2"` to apply 1 suggestion)
-        //     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.24s
-        //      Running `target/debug/chapter_2`
-        // Guessing Game!
-        // Please input your Guess:
-        // 12
-        // your guess: 12
-
-        // R: printing values;
-        // let x = 4;
-        // let y = 12;
-        //
-        // println!("X = {x} and y + 2 = {}", y+2);
-        //
-        // OP = X = 4 and y + 2 = 14.
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too Small 🔽"),
             Ordering::Greater => println!("Too Big 🔼"),
