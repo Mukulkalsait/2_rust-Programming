@@ -1,4 +1,5 @@
 use rand::Rng;
+use std::cmp::Ordering;
 use std::io;
 
 fn main() {
@@ -28,6 +29,8 @@ fn main() {
 
     println!("your guess: {}", guess);
 
+    let guess: u32 = guess.trim().parse().expect("Please type a Number ...🙏🏼");
+
     //BASH: ther error that we purpusfully produced to crash if input is not readable.
     //╰─ cargo run
     //    Compiling chapter_2 v0.1.0 (/home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_2_GuessingGame)
@@ -54,4 +57,9 @@ fn main() {
     // println!("X = {x} and y + 2 = {}", y+2);
     //
     // OP = X = 4 and y + 2 = 14.
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too Small"),
+        Ordering::Greater => println!("Too Big"),
+        Ordering::Equal => println!("You Won !!!"),
+    }
 }
