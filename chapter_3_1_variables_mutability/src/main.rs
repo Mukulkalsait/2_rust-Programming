@@ -3,25 +3,49 @@ fn main() {
     println!("Val of x is : {}", x); // Y:This type of printing is STRING LITRAL.
     x = 5;
     println!("Val of x is : {}", x);
-
-    const FIXED_NUMBER: u64 = 9156_123_645; // G: Yes we can seperate numbers with '_' Underscore.
-    println!("This is the FIXED_NUMBER right here :{}", FIXED_NUMBER);
-
-    // B:  CONST:
-    // I have to tell const the u64 (here 64 because number is bigg
-    // also const NAME SHOULD BE CAPITAL ALL.
-    // also WE have to assign a value to constant when we create it we cannot assign a const 'RUNTIME Value'.
+    println!("{x}");
 
     let shadowing_of_variable = 3;
     println!(
         "we can shadow 're-declear' variables in RUST = {}",
         shadowing_of_variable
-    ); // Y:This type of printing is STRING LITRAL.
+    );
+
+    /* IMP: SHADOWING:
+     *  -
+     *  We must use "LET" again in order to use shadowing. and the most imp thing is both vars will
+     *  still be IM-Mutable.
+     */
+
     let shadowing_of_variable = "three";
 
     println!(
         "This time we can see the same var is pringting string value: {}",
         shadowing_of_variable
-    ); // Y:This type of printing is STRING LITRAL.
+    );
     println!("BOTH time the variable 'shadowing_of_variable' was IMMUTABLE.");
+
+    let shadowing_of_variable = 23;
+    let shadowing_of_variable = shadowing_of_variable * 23 * 23;
+    println!(
+        "Here we did it 3rd time with little experiment .... so 'shadowing_of_variable' : {}",
+        shadowing_of_variable
+    );
+
+    /* B:  CONST: ======================================================================
+     *  -
+     *  I have to tell const the u64 (here 64 because number is bigg
+     *  also const NAME SHOULD BE CAPITAL ALL.
+     *  also WE have to assign a value to constant when we create it we cannot assign a const 'RUNTIME Value'.
+     *  const will be used throught program but let is only inside FUNCTION.
+     */
+
+    const FIXED_NUMBER: u64 = 9156_123_645; // G: Yes we can seperate numbers with '_' Underscore.
+    println!("This is the FIXED_NUMBER right here :{}", FIXED_NUMBER);
+
+    /* Y: const can be assgin with things like that but we cant add a value that is begin
+     *  calcualted at the RUNTIME.
+     */
+    const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+    println!("{THREE_HOURS_IN_SECONDS}"); // we can also print like this.
 }
