@@ -70,7 +70,7 @@ fn main() {
     // IMP:  3. Boolean:
     // Can be set or unset.
 
-    let i = true;  // un-set
+    let i = true; // un-set
     let j: bool = false; // B:set we forcerully set a bull here
 
     /* IMP:  4. Characters
@@ -109,60 +109,88 @@ fn main() {
      */
     let tup1 = ("Lets get Rusty !!!", 1000_000);
     let tup2 = ("Lets get Rusty !!!", 1000_000, "i am third so am i Triple");
-    let tup3 = ("Lets get Rusty !!!", 1000_000, true, "so am  i a quadrapil now ?");
-
+    let tup3 = (
+        "Lets get Rusty !!!",
+        1000_000,
+        true,
+        "so am  i a quadrapil now ?",
+    );
 
     /*B: geting values from -> TUPIL
      *   --------------------------------
-     *  1: tupil De-stracturing 
-     *    we are going to take all the valuse 
+     *  1: tupil De-stracturing
+     *    we are going to take all the valuse
      *    in a single go with variable for every
      *    value in tupil
      *  ---------------------------------
      *  2: tupil Dot-Notatioon.
-     *    we will only take the value we 
+     *    we will only take the value we
      *    needed and use it.
      * */
 
     let (chanel_name, subcriber_count) = tup1; // B: 1: De-stracturing
     let (a, b, c) = tup2; // this totally worked. + automatic assign.
-    
 
     let subcount1 = tup3.0; // B: 2: Dot-Notatioon
     let subcount2 = tup3.1;
     let subcount3 = tup3.2;
 
-
-
-    /* IMP: Array: 
-    *===============================
-    *  1. fixed Length (otherWise use VECTOR)
-    *  let arrName = [ a , 'b', 23 , javan]  == array. 
-    *  let arrayNm = [0;8] in this line we are making array of "8" 
-    *  value whereas all 8 numbers are  "0";
-    * */
-
+    /* IMP: Array:
+     *===============================
+     *  1. fixed Length (otherWise use VECTOR)
+     *  let arrName = [ a , 'b', 23 , javan]  ==> array.
+     *  let arrayNm = [0;8] in this line we are making array of "8"
+     *  value whereas all 8 numbers are  "0";
+     * */
 
     let error_code_array = [200, 404, 500];
-    let nof_found = error_code_array[1] // = 404
-    //
+    let nof_found = error_code_array[1]; // = 404
+    let array_of_8_zeros = [0, 8];
 
+    // my_first_ever_rust_fun(); // this will run the function.
 
+}
 
- // my_first_ever_rust_fun(); // this will run the function.
+fn my_first_ever_rust_fun() {
+    println!(" the function is not working.");
+
+    /* B: FN
+     *   1. Can have arguments -> multyple just like normal funciotns in any languages
+     *   2. Same num of arguments must be passed while calling.
+     *
+     * G: any code in RUST is --> STATEMENT or EXPRESSTION.
+     *   a. statement => perform some action but do not return a value.
+     *   b. expression => perform some action + return a value.
+     *   EG.
+     * */
+
+    println!("a statement. "); // Y: is a statement
+    let sum = 3 + 9; // Y: expression
+    return sum; // this is giving error  because we didnt set return type to the funtion.
+                // IMP: the proper Way is
+                // ||----------------------------\\
+                // || fn function_name() -> i32{ \\
+                // || return sum                 \\
+                // || }                          \\
+                // ||----------------------------\\
+}
+
+fn the_real_return_function(x: i32, y: i32) -> i32 {
+    let sum = x * y;
+    return sum;
+}
+fn another_way_to_return(x: i32, y: i32) -> i32 {
+    let sum = x * y;
+    // Y: no need of ';' semicolon or return billow.
+    sum
 }
 
 
+//Y: The billow line should be inside the main fucntion or any another funciton. "👇👇👇👇👇"
+let sum_no_23 = yet_another_way_to_return(23, 23);
 
-fn my_first_ever_rust_fun(){ 
-println!(" the function si working.")
+fn yet_another_way_to_return(x: i32, y: i32) -> i32 {
+
+    x * y    // Y: no need of ';' semicolon or return billow.
     
-    /* B: fun can have arguments -> multyple
-    * */
-
-    /* B:  fun cna be a statemet either STATEMENT  or EXPRESSTION.
-    *   a statement = no value return.
-    *   b excersize =>a return value.
-    *
-    * */
 }
