@@ -194,3 +194,64 @@ fn yet_another_way_to_return(x: i32, y: i32) -> i32 {
     x * y    // Y: no need of ';' semicolon or return billow.
     
 }
+
+
+fn if_else_understanding(){ 
+    /**
+    *  Y:: if-elseif-else
+    *  1. conduction must be EXPLICETYL "BULLEAN".  
+    *  2.hence -> if (number) {...}  // will not work (number is not bull)
+    */
+
+
+    let number =23;
+if number < 50 {
+    println!("num is small");
+}else if number = 50 { 
+        println!("number is equal !!");
+}else {
+    println!("Number is alleready greter.");
+}
+
+    /**
+    *  Y:: if-elseif-else = EXPLICETYL "BULLEAN".  
+    *  eg.
+    */
+
+    let conduction = true;
+    let number = if conduction{ 5 } else { 6 };
+
+}
+
+
+fn loops_in_rust() {
+
+    // Y: 1. a loop without stop.
+    loop {
+        println!("again ! ctrl + c to stop.");
+            break;
+    }
+
+
+    // Y: 2. A Propper loop.
+    let mut counter = 10; 
+
+    let return_value = loop {
+        println!("This is the loop You are waiting for {}",counter);
+        if(counter <= 0){break counter;} // G: here we are RETURNING  "counter";
+        counter -=1;
+    };
+
+    // Y: 3. While loop.
+
+    let mut number = 3;
+
+    while number !=0  {
+        println!("{}!", number);
+       number -=1; 
+    };
+    println!(" This line will only print if the loop is ended.");
+
+
+
+}
