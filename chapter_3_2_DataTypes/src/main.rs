@@ -253,5 +253,19 @@ fn loops_in_rust() {
     println!(" This line will only print if the loop is ended.");
 
 
+    // Y: 3. For loop / For in loop.
+    let arra_x = [12,23,34,45,56,67,78,89,90];
+
+    for element in arra_x.iter() {
+        println!("The value is {}" , element);
+    }
+
+    // Y: 4. Special For loop.
+     
+    for number_x in 1..34{     // IMP: here only 1 to 33 numbers will be printed because last is not printed.
+        println!("The value is {}" , number_x);
+    }
+
+
 
 }
