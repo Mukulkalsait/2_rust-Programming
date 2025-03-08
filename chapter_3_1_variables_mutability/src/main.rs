@@ -1,8 +1,8 @@
 fn main() {
     let mut x = 4; //IMP: i can see variable with number is allready showing i32.
-    println!("Val of x is : {}", x); // Y:This type of printing is STRING LITRAL.
+    println!("Val of x Before is : {}", x); // Y:This type of printing is STRING LITRAL.
     x = 5;
-    println!("Val of x is : {}", x);
+    println!("Val of x After is : {}", x);
     println!("{x}");
 
     let shadowing_of_variable = 3;
@@ -25,7 +25,9 @@ fn main() {
     );
     println!("BOTH time the variable 'shadowing_of_variable' was IMMUTABLE.");
 
-    let shadowing_of_variable = 23;
+    let shadowing_of_variable = 23; // everytime we want to change it we are shadowing it
+                                    // "intentionally " ∴ if we dont want to let it change it will not change in any case...
+                                    // because we wont use "let".
     let shadowing_of_variable = shadowing_of_variable * 23 * 23;
     println!(
         "Here we did it 3rd time with little experiment .... so 'shadowing_of_variable' : {}",

@@ -1,5 +1,5 @@
 use colored::*;
-use rand::Rna;
+use rand::{Rna, Rng};
 use std::cmp::Ordering;
 use std::{io, u32};
 
@@ -26,12 +26,12 @@ fn main() {
 
 let anotherSecretNumber:u32 = rand::thread_rng().gen_range(1,1001);
     
-    println!("💖 Please fasten your belts to start the huge guessing Game from 1 to 1000 numbers this time ....")
+    println!("💖 Please fasten your belts to start the huge guessing Game from 1 to 1000 numbers this time ....");
 
     loop {
         println!("👇 Make a Guess ....");
 
-        let mut guess:  =String::new();
+        let mut guess:  =  String::new();
         io::stdin().read_line(&mut guess).expect("Falure to read line !");
        
         println!("You Guessed : {}" , guess);
