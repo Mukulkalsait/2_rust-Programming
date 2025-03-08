@@ -2,6 +2,11 @@ const TWO: u32 = 1 + 1;
 
 fn main() {
     println!("{TWO}");
+
+    println!(" ===== Data Types ===== \n");
+    println!("-----> A. Scaller DT \n");
+    println!("-----> A. Compound DT \n");
+
     /* Y: 2 main data types:
      * A. Scaller Datatypes.
      * B. Compound Datatypes.
