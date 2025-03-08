@@ -3,9 +3,9 @@ const TWO: u32 = 1 + 1;
 fn main() {
     println!("{TWO}");
 
-    println!(" ===== Data Types ===== \n");
-    println!("-----> A. Scaller DT \n");
-    println!("-----> A. Compound DT \n");
+    println!(" ===== Data Types 2(S-C)=====");
+    println!("-----> A. Scaller DT  BIFC \n");
+    println!("-----> A. Compound DT TAF\n");
 
     /* Y: 2 main data types:
      * A. Scaller Datatypes.
@@ -25,19 +25,19 @@ fn main() {
 
     /* IMP:
      * 1. INT:
-     * -----------------------------------
-     * \           \          \         \\
-     * \  length   \  signed  \ Unsined \\
-     * \           \   +/-    \    +    \\
-     * -----------------------------------
-     * \\  8-bit   \   i8     \   u8    \\
-     * \\  16-bit  \   i16    \   u16   \\
-     * \\  32-bit  \   i32    \   u32   \\
-     * \\  64-bit  \   i64    \   u64   \\
-     * \\  128-bit \   i128   \   u128  \\
-     * \\----------\--------------------\\
-     * \\   ARCH   \architecture depend \\
-     * ===================================
+     * ---------------------------------------------------
+     * \           \          \         \\               \
+     * \  length   \  signed  \ Unsined \\     Float     \
+     * \           \   +/-    \    +    \\               \
+     * ---------------------------------------------------
+     * \\  8-bit   \   i8     \   u8    \\    i8         \
+     * \\  16-bit  \   i16    \   u16   \\    i16        \
+     * \\  32-bit  \   i32    \   u32   \\    i32        \
+     * \\  64-bit  \   i64    \   u64   \\    i64        \
+     * \\  128-bit \   i128   \   u128  \\    i128       \
+     * \\----------\--------------------\\---------------\
+     * \\   ARCH   \           architecture depend       \
+     * ===================================================
      *
      * */
 
@@ -58,20 +58,20 @@ fn main() {
      *  \       assigingin it higher value:                      \
      *  \    A. while DEBUG: rust will panic---                  \
      *  \    B. while RELEASE: rust will do wrapping....         \
-     *  \        if biger then   255 then                        \
+     *  \        if biger then num/255 reminder= assign.         \
      *  \                                                        \
      *  \--------------------------------------------------------\
      * */
 
     // IMP:  2. FLOAT:
-    let g = 2.0; //  G: float default f64
+    let g = 2.0; //  G: float default f64 IMP"f32= float32"
     let h: f32 = 3.0; //  forcefully assgined f32
 
     // IMP:  3. Boolean:
-    // cna be set or unset.
+    // Can be set or unset.
 
-    let i = true; // un-set
-    let j: bool = false; // set
+    let i = true;  // un-set
+    let j: bool = false; // B:set we forcerully set a bull here
 
     /* IMP:  4. Characters
      * ===========================
@@ -88,12 +88,12 @@ fn main() {
 
     //DX:=========== B. Compuoun Data Type =======================================================================================================================================
 
-    /* Y: B. Compound DT
+    /* Y: B. Compound DT -> TAF
      *  ->
      *  type that represent a group of values  is "Compound data type".
      *   ----------------------------------------
      *    A. tup ( tupil)
-     *   B. array
+     *    B. array
      *    C. fu
      *
      *
@@ -109,19 +109,29 @@ fn main() {
      */
     let tup1 = ("Lets get Rusty !!!", 1000_000);
     let tup2 = ("Lets get Rusty !!!", 1000_000, "i am third so am i Triple");
-    let tup3 = ("Lets get Rusty !!!", 1000_000, "i am third so am i Triple");
+    let tup3 = ("Lets get Rusty !!!", 1000_000, true, "so am  i a quadrapil now ?");
 
-    let (chanel_name, subcriber_count) = tup1; // B: 1 ===>
+
+    /*B: geting values from -> TUPIL
+     *   --------------------------------
+     *  1: tupil De-stracturing 
+     *    we are going to take all the valuse 
+     *    in a single go with variable for every
+     *    value in tupil
+     *  ---------------------------------
+     *  2: tupil Dot-Notatioon.
+     *    we will only take the value we 
+     *    needed and use it.
+     * */
+
+    let (chanel_name, subcriber_count) = tup1; // B: 1: De-stracturing
     let (a, b, c) = tup2; // this totally worked. + automatic assign.
+    
 
-    let subcount1 = tup3.0; // B: 2 ===>
+    let subcount1 = tup3.0; // B: 2: Dot-Notatioon
     let subcount2 = tup3.1;
     let subcount3 = tup3.2;
 
-    /*B:
-     * 1 --  tupil De-stracturing
-     * 2 --  tupil Dot-Notatioon.
-     * */
 
 
     /* IMP: Array: 
