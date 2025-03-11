@@ -1,5 +1,3 @@
-use std::array;
-
 fn main() {
     tupil_creation(); //  G: 1.Tupil
     array_cretion(); //  G: 2.Array
@@ -173,6 +171,12 @@ fn function_1() -> String {
     let resualt1 = return_function1(sum_array[0], sum_array[1]);
     let resualt2 = short_return2(sum_array[2], sum_array[3]);
     let resualt3 = another_function(sum_array[4], sum_array[5]);
+
+    println!("\n=======================================================================\n");
+    for each_element in resualt3.iter() {
+        println!("The value is {}", each_element);
+    }
+    println!("\n=======================================================================\n");
 
     println!(
         " R1 : {} 
