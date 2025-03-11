@@ -1,4 +1,12 @@
+use std::array;
+
 fn main() {
+    tupil_creation(); //  G: 1.Tupil
+    array_cretion(); //  G: 2.Array
+    let return_of_main_funciton = function_1(); // G: fun1
+}
+
+fn tupil_creation() {
     println!(
         " 
                    Compound DT -> TAF
@@ -16,7 +24,7 @@ fn main() {
 
     let power_tupil = (
         "Lets get Rusty !!!",
-        1000_000,
+        1_000_000,
         true,
         "so am i a quadrapil now ?",
         "who the fuck cares 👇",
@@ -79,4 +87,135 @@ fn main() {
             ",
         a0, a1, a2, a3, a4, a5, a6, a7
     );
+}
+
+fn array_cretion() {
+    /* IMP: Array:
+     *===============================
+     *  1. fixed Length (otherWise use VECTOR)
+     *  let arrName = [ a , 'b', 23 , javan]  ==> array.
+     *  let arrayNm = [0;8] in this line we are making array of "8"
+     *  value whereas all 8 numbers are  "0";
+     * */
+
+    println!(
+            " 
+                1. ARRAY ===> Fixed Length 
+                    (otherWise use VECTOR)
+
+                2. Creation: 
+                        a. let arrName = [ a , 'b', 23 , javan] 
+                        
+                        b. let arrayNm = [0;8] 
+                            (in this line we are making array of \"8\" value whereas all 8 numbers are  \"0\")
+                
+                3. data types must match in array otherwise ERROR.
+            ");
+
+    let error_code_array = [200, 404, 500];
+    let nof_found = error_code_array[1]; // = 404
+    let array_of_8_zeros = [0, 8];
+
+    println!(
+        "  The Useual Way:
+        error_code_array[0]: {}
+        error_code_array[1]: {} 
+        error_code_array[2]: {}",
+        error_code_array[0], error_code_array[1], error_code_array[2],
+    );
+}
+
+fn function_1() -> String {
+    /* B: FN
+     *   1. Can have arguments -> multyple just like normal funciotns in any languages
+     *   2. Same num of arguments must be passed while calling.
+     *
+     * G: any code in RUST is --> STATEMENT or EXPRESSTION.
+     *   a. statement => perform some action but do not return a value.
+     *   b. expression => perform some action + return a value.
+     *   EG.
+     * */
+    println!(" ");
+
+    /* Y:  IN order to CONCATE Strings
+     *      --------------------------
+     *   atleast 1 string should be created from
+     *       String::from("...");
+     *   otherwise concate will not work.
+     **/
+
+    let steatement1 = String::from("This is the oupout of main function."); // IMP: String::from()
+    let steatement2 = "We are returningi this to insure Function Part is End.";
+    let steatement3 =
+        "This is only to conform if we need Strfing::from() multyple time or just once.";
+    let return_of_fun = steatement1 + steatement2 + steatement3;
+
+    /* IMP: This is giving error  because we didnt set return type to the funtion.
+     * the proper Way is
+     * ||----------------------------\\
+     * || fn function_name() -> i32{ \\
+     * || return sum                 \\
+     * || }                          \\
+     * ||----------------------------\\
+     */
+    let sum_array = [23, 34, 45, 56, 67, 78];
+    let resualt1 = return_function1(sum_array[0], sum_array[1]);
+    let resualt2 = short_return2(sum_array[2], sum_array[3]);
+    let resualt3 = another_function(sum_array[4], sum_array[5]);
+
+    println!(
+        " R1 : {} 
+          R2 : {} ",
+        resualt1, resualt2,
+    );
+    if_else_fun1(sum_array[3]);
+    // return return_of_fun; // this will tell you G: Unneeded 'return' steatement ... | hence direct ->
+    // Y: no need of ';' semicolon or return billow.
+    return_of_fun
+}
+
+/*WARNING:  This type of return will give you worning.
+* |------------------------------------------------------|
+*      fn return_function1(x: i32, y: i32) -> i32 {
+*          let sum = x * y;
+*          sum
+*      }
+*      herce
+*      👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+*/
+
+fn return_function1(x: u32, y: u32) -> u32 {
+    x * y
+}
+
+fn short_return2(a: u32, b: u32) -> u32 {
+    a + b
+}
+
+/** Y:: Array rutruning function
+*   we are returningn + * / % and - or 2 u32 vars
+*    in thi function in form of Array.
+*   return type [u32; 5]
+*    
+ */
+fn another_function(a: u32, b: u32) -> [u32; 5] {
+    [a + b, a * b, a / b, a % b, a - b]
+}
+
+/** Y:: if-elseif-else
+ *  1. conduction must be EXPLICETYL "BULLEAN".  
+ *  2. hence -> if (number) {...}  // will not work (number is not bull)
+ */
+fn if_else_fun1(a: u32) {
+    if a < 50 {
+        println!("num is small");
+    } else if a == 50 {
+        println!("a : {} is equal !!", a);
+    } else {
+        println!("a : {} is alleready greter.", a);
+    }
+
+    let conduction = true;
+    let num = if conduction { 5 } else { 6 };
+    println!("Number = {}", num);
 }
