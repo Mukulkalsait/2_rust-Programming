@@ -4,8 +4,13 @@ fn main() {
     tupil_creation(); //  G: 1.Tupil
     array_cretion(); //  G: 2.Array
     let return_of_main_funciton = function_1(); // G: fun1
+    println!("{}", return_of_main_funciton);
+    loops_in_rust();
 }
 
+/* INFO:  This Function is giving information on "TUPIL".
+* |------------------------------------------------------|
+*/
 fn tupil_creation() {
     println!(
         " 
@@ -89,6 +94,9 @@ fn tupil_creation() {
     );
 }
 
+/* INFO:  This Function is giving information on "ARRAY".
+* |------------------------------------------------------|
+*/
 fn array_cretion() {
     /* IMP: Array:
      *===============================
@@ -125,6 +133,9 @@ fn array_cretion() {
     );
 }
 
+/* INFO:  This Function is giving information on "FUNCTION".
+* |------------------------------------------------------|
+*/
 fn function_1() -> String {
     /* B: FN
      *   1. Can have arguments -> multyple just like normal funciotns in any languages
@@ -174,7 +185,7 @@ fn function_1() -> String {
     return_of_fun
 }
 
-/*WARNING:  This type of return will give you worning.
+/*This type of return will give you worning.
 * |------------------------------------------------------|
 *      fn return_function1(x: i32, y: i32) -> i32 {
 *          let sum = x * y;
@@ -184,25 +195,28 @@ fn function_1() -> String {
 *      👇👇👇👇👇👇👇👇👇👇👇👇👇👇
 */
 
+/* Just a return fucntion = Multiply
+*/
 fn return_function1(x: u32, y: u32) -> u32 {
     x * y
 }
 
+/* Just a return fucntion = Addition
+*/
 fn short_return2(a: u32, b: u32) -> u32 {
     a + b
 }
 
-/** Y:: Array rutruning function
+/** Array rutruning function
 *   we are returningn + * / % and - or 2 u32 vars
 *    in thi function in form of Array.
 *   return type [u32; 5]
-*    
- */
+*/
 fn another_function(a: u32, b: u32) -> [u32; 5] {
-    [a + b, a * b, a / b, a % b, a - b]
+    [a + b, a * b, a / b, a % b, b - a] // here b is bigger than a so b-a
 }
 
-/** Y:: if-elseif-else
+/** if-elseif-else
  *  1. conduction must be EXPLICETYL "BULLEAN".  
  *  2. hence -> if (number) {...}  // will not work (number is not bull)
  */
@@ -218,4 +232,53 @@ fn if_else_fun1(a: u32) {
     let conduction = true;
     let num = if conduction { 5 } else { 6 };
     println!("Number = {}", num);
+}
+
+/* INFO: loops_in_rust
+*
+* */
+
+fn loops_in_rust() {
+    // B: 1.Normal loop
+    let mut flag: u32 = 0;
+    loop {
+        println!(
+            "WARNING: if we dont use BREAK; the loop will not stop ::: use -> ctrl + c to stop.(in case)"
+        );
+        if flag >= 5 {
+            break;
+        }
+        flag += 1;
+    }
+
+    // B: 2. Loop.
+    let mut counter = 10;
+    let return_value = loop {
+        println!("This is the loop You are waiting for {}", counter);
+        if (counter <= 0) {
+            break counter;
+        } // G: here we are RETURNING  "counter";
+        counter -= 1;
+    };
+    println!("Loop run till {}", return_value);
+
+    // B: 3. While loop.
+    let mut number = 3;
+    while number != 0 {
+        println!("{}!", number);
+        number -= 1;
+    }
+    println!(" This line will only print if the loop is ended.");
+
+    // Y: 4. For loop / For in loop.
+    let arra_x = [12, 23, 34, 45, 56, 67, 78, 89, 90];
+    for element in arra_x.iter() {
+        println!("The value is {}", element);
+    }
+
+    // Y: 5. Special For loop.
+    for number_x in 1..34 {
+        // IMP: here only 1 to 33 numbers will be printed because last is not printed.
+        println!("The value is {}", number_x);
+    }
 }
