@@ -22,12 +22,12 @@ Memory management types:
         " 
 Memory types in rust:
 ===============================================================================================
-stack: 
-  1. Created For Every Function.
+ A. stack: 
+  1. Stack Frame created For Every Function.
   2. Fixed sized.
   3. Size Calculated at compaillation.
      
-  |~~~~~~~~~~~~~~~| => Stack For Function.
+  |~~~~~~~~~~~~~~~| => Stack For Functions
   |               |
   |               |
   |               |
@@ -40,23 +40,104 @@ stack:
   |               |
   |               |
   ||^^^^^^^^^^^^^||
-  || stack frame || => frame contain a variable.
+  || stack frame || => frame for every Function.
   ||_____________||
   |_______________|  
-     
+  4. when a stack die all the variables die,when a stack frame die its variables die.
+=============================================================================================== "
+    );
+    println!(
+        " 
+===============================================================================================
+ B. Heap: 
+
+    1. Less Organised.
+    2. Data => can be Large , Dynamic , and lifetime of data can be controlled.
+    3. Grow-Shrink => at Runtime.
+===============================================================================================
+"
+    );
+    println!(
+        " 
+===============================================================================================
   eg  fn a(){{                    
             let x: &str = 'hello';
             let y: i32 = 22;      
             b();                  
             }}                    
+        b(){{ 
+            let x: String = String::from('world');
+            }}
 
- |^^^^^^^^| STACK      
- |        | For        
- | b()  x | The        
- | a() x,y| Function
- |________| Above '👆'   
+ |^^^^^^^^|
+ |        |
+ | b()  x | => stack frame for fn b()  
+ | a() x,y| => Stack frame for fn a() 
+ |________|    
+***********************************************************************************************  
+here  in 1.fn a() 
+            A.botrh x and y are fixed variables so they are sored in Stack.
+         2.fn b()
+            A. X is string from ('somethign') which can be of different size so X is stored in 
+            HEAP but its pointer is stored in STACK whith the help of heap. heap allocate memory 
+            to the X
+===============================================================================================
 
-  4. when a stack die all the variables die,when a stack frame die its variables die.
-=============================================================================================== "
-    )
+a. pushing in stack is faster > allocating memory in heap.
+b. accessing data in stack is faster > on Heap ( because pointer is stored in stack and it points to words the Heap)
+");
+
+    /* Y:  NOW 3 GOLDEN RULES: Tattow them.
+     * --------------------------------------
+     *     1. Each value ==> must have OWNER.
+     *     2. 1 VAR = 1 OWNER( NO MORE NO LESS)
+     *     3. When Owner is Out Of SCOPE = value Die.
+     *
+     *
+     * B: eg.  STACK
+     *=================================================
+     *     {
+     *       sum = INVALD  DX: not decleared
+     * G:
+     *      let sum: &str =  'I am sum.';
+     *        println!( sum );
+     *      // sum is valid => do stuffs with Sum
+     *     }
+     *     //DX: sum dead.
+     *=================================================
+     *
+     * B: eg.  HEAP
+     *     {
+     *       sum = INVALD  DX: not decleared
+     * G:
+     *      let sum: String = String::from('I am sum.');
+     *      Y: '👆' this time into HEAP
+     *     G:   println!( sum );
+     *      // sum is valid => do stuffs with Sum
+     *     }
+     *     //DX: sum dead.
+     *=================================================*/
+
+    let x = 5;
+    let y = x; // Copy
+
+    println!("{}", x);
+    println!("{}", y);
+
+    /* Y: the copy of Stack Data is done from above example.
+     *   ∴ simple things get Copyed in RUST. ==> Copy Trate.
+     * */
+
+    let string1 = String::from("Hello.");
+    let string2 = string1;
+
+    // DX:  This will give error UNCOMMENT.
+    // println!("{}", string1);
+    println!("{}", string2);
+    println!(" the Ownershipo of string1 is transfered ot string2 so s1 is dead.");
+
+    // G: but we can still do that in rust
+
+    let string3 = string2.clone();
+    println!(" with this string2 == string3 == {}", string3);
 }
