@@ -8,6 +8,7 @@ fn main() {
     memory_info(); //        IMP:  VERY IMP MEMORY WORKAEOUND IN PROGRAMS
     example_one(); //        INFO: Real EXample 1:
     golden_rules(); //       IMP:  VERY IMP INFO ON HEAP AND STACK
+    example_two();
 }
 
 fn memory_management() {
@@ -272,4 +273,32 @@ fn golden_rules() {
     /* Y: the copy of Stack Data is done from above example.
      *   ∴ simple things get Copyed in RUST. ==> Copy Trate.
      * */
+}
+fn example_two() {
+    /* Y:
+     *   => uncomment the code to understand
+     *   how variables stored inside HEAP is
+     *   Transfer ownership even while usign
+     *   functions Attribute
+     *   => whereas variabnles stored inside
+     *   stack are copyed instead.
+     */
+    let s = String::from("mukul");
+    ownership_transfer_into_attribute(s);
+    // println!("{}", s); //IMP: UNCOMMENT
+
+    let a: u32 = 23;
+    copy_from_stack(a);
+    println!("{}", a);
+
+    /* Y: both the functions
+     * */
+}
+
+/* Y: for example_two */
+fn ownership_transfer_into_attribute(abcd: String) {
+    println!("{}", abcd);
+}
+fn copy_from_stack(abcd: u32) {
+    println!("{}", abcd);
 }
