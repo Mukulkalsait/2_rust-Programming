@@ -18,18 +18,18 @@ Memory management types:
 =============================================================================================== \n\n\n
 " );
 
-    /*   INFO: Memroy IN PROGRAM
+    /*  INFO: Memroy IN PROGRAM
      *
-     *       B: 1. Heap                // FREE PULL
-     *       G: 2. Stack               // Fixed Sized Memory + Functions ( Variables, Arguments, Returns and Returniung Places)
-     *       Y: 3. Static / Global     // Global Variables
-     *       R: 4. Code                // Code Writen
+     *     B: 1. Heap                // FREE PULL
+     *     G: 2. Stack               // Fixed Sized Memory + Functions ( Variables, Arguments, Returns and Returniung Places)
+     *     Y: 3. Static / Global     // Global Variables
+     *     R: 4. Code                // Code Writen
      *
-     * IMP:
+     *  DX:
      *  while protram is compaliling  2,3,4 are calcualted.
      *  while proram is runnigng the stack is changing while code and static/global stays.
      *  while Fucntion is running its stack frame is changing after fun die  stack frame die.
-     * DX:
+     *  Y:
      *  1. Stack = Call by Value. = value is in stack.
      *  2. Heap = Call by reference = valuse is in Heap but pointer is in stack.
      *  3. In C/C++ we allocate the memory from Heap with 'maloc/new' and dealocate with 'free/delete'
@@ -45,6 +45,28 @@ Memory management types:
      *     cleared inside the "STACK FRAME".
      *  10.Unlike heap stack is 1.FiXED ins size, 2.Running while protram is running, 3.Cleans its
      *     own stuffs.
+     *
+     *  B: HEAP :
+     *   1. we Tell the compailar to assign a value to heap in C/C++/ and rust.
+     *   2. when it happens Stack stores
+     *        Pointer  = Ptr
+     *        Length   = Len
+     *        Capacity = Cp
+     *       inside the "stack" => this is what help us find the Heap we stored.
+     *   3. if we store a Array in heap it Stored in the order we gave from billow to upwords.
+     *    eg. arr = [a, b, c, d, e]
+     *    in heap it wil be
+     *  Y:
+     *    |^^^^^^^^^^^^|
+     *    | arr[4] = e | 🔝 ⮙
+     *    | arr[3] = d | 🔝 |
+     *    | arr[2] = c | 🔝 |
+     *    | arr[1] = b | 🔝 |
+     *    | arr[0] = a | 🔝 |
+     *    |____________|
+     *  and   arr is pointer stored in
+     *   G:  Stack.
+     *
      * */
 
     println!(
