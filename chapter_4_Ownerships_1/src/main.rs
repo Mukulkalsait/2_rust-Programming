@@ -291,8 +291,9 @@ fn example_two() {
     copy_from_stack(a);
     println!("{}", a);
 
-    /* Y: both the functions
-     * */
+    /* Y: both the functions are same but just because one variable is stored in heap
+     *     we cannot treate it same.
+     */
 }
 
 /* Y: for example_two */
