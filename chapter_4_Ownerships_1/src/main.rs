@@ -1,9 +1,18 @@
 fn main() {
+    println!(
+        " 🖳🖳🖳🖳🖳🖳🖳🖳   chapter_4_Ownership :    🖳🖳🖳🖳🖳🖳🖳🖳
+=============================================================================================== "
+    );
+
+    memory_management(); //  INFO: Memory Management in different Languages.
+    memory_info(); //        IMP:  VERY IMP MEMORY WORKAEOUND IN PROGRAMS
+    example_one(); //        INFO: Real EXample 1:
+    golden_rules(); //       IMP:  VERY IMP INFO ON HEAP AND STACK
+}
+
+fn memory_management() {
     println!( "\n\n\n
 
-
-   🖳🖳🖳🖳🖳🖳🖳🖳   chapter_4_Ownership :    🖳🖳🖳🖳🖳🖳🖳🖳
-===============================================================================================
 Memory management types: 
 
 1. Garbage Collection => No Err + Easy/Fast Write | Large + Slow run + No Control.
@@ -17,6 +26,65 @@ Memory management types:
     Rust = compail time memory check feature. (with 'unsafe' we can overwrite this.) Borrow checker.
 =============================================================================================== \n\n\n
 " );
+}
+fn memory_info() {
+    println!( "
+    /*  INFO: Memroy IN PROGRAM
+     *
+     *     B: 1. Heap                // FREE PULL
+     *     G: 2. Stack               // Fixed Sized Memory + Functions ( Variables, Arguments, Returns and Returniung Places)
+     *     Y: 3. Static / Global     // Global Variables
+     *     R: 4. Code                // Code Writen
+     *
+     *  DX:
+     *  while protram is compaliling  2,3,4 are calcualted.
+     *  while proram is runnigng the stack data is changing {{  not Size  }} while code and static/global stays.
+     *  while Fucntion is running its stack frame is changing after fun die  stack frame die.
+     *  Y:
+     *  1. Stack = Call by Value. = value is in stack.
+     *  2. Heap = Call by reference = valuse is in Heap but pointer is in stack.
+     *  3. In C/C++ we allocate the memory from Heap with 'maloc/new' and dealocate with 'free/delete'
+     *  4. Dealocation is very very important in HEAP. because it is under our controll so unless we
+     *     clean it it will not get cleaned itself.
+     *  5. In stack the functions are arranged in order of their exicuaiotn Main is at lowest.
+     *  6. After main load it starts exicution of instide it.
+     *  7. As soon as a function is called inside the main it loads above Main , and if there si
+     *     another funciton inside that function it loads above that funcito. and soo on.
+     *  8. Allways the topmost function is running while the billow are waiting for the exicution
+     *     and resualt returning.
+     *  9. As a Fn ends its stack is cleared, with stack every Var, Arguments, and returntyps are
+     *     cleared inside the 'STACK FRAME'.
+     *  10. Unlike HEAP 'STACK' is:
+     *           1.FiXED in size,
+     *           2.Consistently Running while protram is running,
+     *           3.Makes and Cleans its Own Shit.
+     *   11. If in any case the Memory requirement of stack goes beyond the memory it has,
+     *      ===> its ' STACK OFERFLOW '  {{ Program Crash. }}
+     *
+     *  B: HEAP :
+     *   1. We Tell the compailar to assign a value to heap in C/C++/ and rust.
+     *   2. when it happens Stack stores
+     *        Pointer  = Ptr
+     *        Length   = Len
+     *        Capacity = Cp
+     *       inside the 'stack' => this is what help us find the Heap we stored.
+     *   3. if we store a Array in heap it Stored in the order we gave from billow to upwords.
+     *    eg. arr = [a, b, c, d, e]
+     *    in heap it wil be
+     *  Y:
+     *    |^^^^^^^^^^^^|
+     *    | arr[4] = e | 🔝 ⮙
+     *    | arr[3] = d | 🔝 |
+     *    | arr[2] = c | 🔝 |
+     *    | arr[1] = b | 🔝 |
+     *    | arr[0] = a | 🔝 |
+     *    |____________|
+     *  and   arr is pointer stored in
+     *   G:  Stack.
+     *   DX: HENSE WE USE ARRAYS LIKE  =>  Arr[n].
+     * */
+
+");
 
     /*  INFO: Memroy IN PROGRAM
      *
@@ -42,13 +110,13 @@ Memory management types:
      *  8. Allways the topmost function is running while the billow are waiting for the exicution
      *     and resualt returning.
      *  9. As a Fn ends its stack is cleared, with stack every Var, Arguments, and returntyps are
-     *     cleared inside the "STACK FRAME".
+     *     cleared inside the 'STACK FRAME'.
      *  10. Unlike HEAP 'STACK' is:
      *           1.FiXED in size,
      *           2.Consistently Running while protram is running,
      *           3.Makes and Cleans its Own Shit.
      *   11. If in any case the Memory requirement of stack goes beyond the memory it has,
-     *      ===> its " STACK OFERFLOW "  { Program Crash. }
+     *      ===> its ' STACK OFERFLOW '  { Program Crash. }
      *
      *  B: HEAP :
      *   1. We Tell the compailar to assign a value to heap in C/C++/ and rust.
@@ -56,7 +124,7 @@ Memory management types:
      *        Pointer  = Ptr
      *        Length   = Len
      *        Capacity = Cp
-     *       inside the "stack" => this is what help us find the Heap we stored.
+     *       inside the 'stack' => this is what help us find the Heap we stored.
      *   3. if we store a Array in heap it Stored in the order we gave from billow to upwords.
      *    eg. arr = [a, b, c, d, e]
      *    in heap it wil be
@@ -101,18 +169,27 @@ Memory types in rust:
   4. when a stack die all the variables, Arguments, Return positions die,when a stack frame die its variables die.
 =============================================================================================== "
     );
-    println!(
-        " 
-===============================================================================================
- B. Heap: 
+}
+fn example_one() {
+    let x = 5;
+    let y = x; // Copy
 
-    1. Less Organised.
-    2. Data => can be Large , Dynamic , and lifetime of data can be controlled.
-    3. Grow-Shrink => at Runtime. 
-    4. Dangerous if not controlled. // Must be controlled.
-===============================================================================================
-"
-    );
+    println!("{}", x);
+    println!("{}", y);
+
+    let string1 = String::from("Hello.");
+    let string2 = string1;
+
+    // DX:  This will give error UNCOMMENT.
+    // println!("{}", string1);
+    println!("{}", string2);
+    println!(" the Ownershipo of string1 is transfered ot string2 so s1 is dead.");
+
+    // G: but we can still do that in rust
+
+    let string3 = string2.clone();
+    println!(" with this string2 == string3 == {}", string3);
+
     println!(
         " 
 ===============================================================================================
@@ -142,7 +219,20 @@ here  in 1.fn a()
 a. pushing in stack is faster > allocating memory in heap.
 b. accessing data in stack is faster > on Heap ( because pointer is stored in stack and it points to words the Heap)
 ");
+}
+fn golden_rules() {
+    println!(
+        " 
+===============================================================================================
+ B. Heap: 
 
+    1. Less Organised.
+    2. Data => can be Large , Dynamic , and lifetime of data can be controlled.
+    3. Grow-Shrink => at Runtime. 
+    4. Dangerous if not controlled. // Must be controlled.
+===============================================================================================
+"
+    );
     /* Y:  NOW 3 (ABC) GOLDEN RULES: Tattow them.
      * --------------------------------------
      *   A-1. Each value ==> must have OWNER.
@@ -153,8 +243,6 @@ b. accessing data in stack is faster > on Heap ( because pointer is stored in st
      *   DX:
      *     6. when we assign a Heap variable to the functions ARGUMENT its like Aggisgining a Heap
      *        value to Another Owner ∴ the orignal owner DIES.
-     *
-     *
      *
      * B: eg.  STACK
      *=================================================
@@ -181,26 +269,7 @@ b. accessing data in stack is faster > on Heap ( because pointer is stored in st
      *     IMP:{ RUST ALLOCATE AND DEALOCATE THE MEMORY IN HEAP AUTOMATICALLY} <<<<<<<<<<<<<<<<<<<<<<
      *=================================================*/
 
-    let x = 5;
-    let y = x; // Copy
-
-    println!("{}", x);
-    println!("{}", y);
-
     /* Y: the copy of Stack Data is done from above example.
      *   ∴ simple things get Copyed in RUST. ==> Copy Trate.
      * */
-
-    let string1 = String::from("Hello.");
-    let string2 = string1;
-
-    // DX:  This will give error UNCOMMENT.
-    // println!("{}", string1);
-    println!("{}", string2);
-    println!(" the Ownershipo of string1 is transfered ot string2 so s1 is dead.");
-
-    // G: but we can still do that in rust
-
-    let string3 = string2.clone();
-    println!(" with this string2 == string3 == {}", string3);
 }
