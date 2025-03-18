@@ -27,7 +27,7 @@ Memory management types:
      *
      *  DX:
      *  while protram is compaliling  2,3,4 are calcualted.
-     *  while proram is runnigng the stack is changing while code and static/global stays.
+     *  while proram is runnigng the stack data is changing { not Size } while code and static/global stays.
      *  while Fucntion is running its stack frame is changing after fun die  stack frame die.
      *  Y:
      *  1. Stack = Call by Value. = value is in stack.
@@ -41,13 +41,17 @@ Memory management types:
      *     another funciton inside that function it loads above that funcito. and soo on.
      *  8. Allways the topmost function is running while the billow are waiting for the exicution
      *     and resualt returning.
-     *  9. As one Fn ends the stack is cleared, with stack every Var, Arguments, and returntyps are
+     *  9. As a Fn ends its stack is cleared, with stack every Var, Arguments, and returntyps are
      *     cleared inside the "STACK FRAME".
-     *  10.Unlike heap stack is 1.FiXED ins size, 2.Running while protram is running, 3.Cleans its
-     *     own stuffs.
+     *  10. Unlike HEAP 'STACK' is:
+     *           1.FiXED in size,
+     *           2.Consistently Running while protram is running,
+     *           3.Makes and Cleans its Own Shit.
+     *   11. If in any case the Memory requirement of stack goes beyond the memory it has,
+     *      ===> its " STACK OFERFLOW "  { Program Crash. }
      *
      *  B: HEAP :
-     *   1. we Tell the compailar to assign a value to heap in C/C++/ and rust.
+     *   1. We Tell the compailar to assign a value to heap in C/C++/ and rust.
      *   2. when it happens Stack stores
      *        Pointer  = Ptr
      *        Length   = Len
@@ -66,7 +70,7 @@ Memory management types:
      *    |____________|
      *  and   arr is pointer stored in
      *   G:  Stack.
-     *
+     *   DX: HENSE WE USE ARRAYS LIKE  =>  Arr[n].
      * */
 
     println!(
@@ -94,7 +98,7 @@ Memory types in rust:
   || stack frame || => frame for every Function.
   ||_____________||
   |_______________|  
-  4. when a stack die all the variables die,when a stack frame die its variables die.
+  4. when a stack die all the variables, Arguments, Return positions die,when a stack frame die its variables die.
 =============================================================================================== "
     );
     println!(
@@ -104,7 +108,8 @@ Memory types in rust:
 
     1. Less Organised.
     2. Data => can be Large , Dynamic , and lifetime of data can be controlled.
-    3. Grow-Shrink => at Runtime.
+    3. Grow-Shrink => at Runtime. 
+    4. Dangerous if not controlled. // Must be controlled.
 ===============================================================================================
 "
     );
@@ -138,11 +143,17 @@ a. pushing in stack is faster > allocating memory in heap.
 b. accessing data in stack is faster > on Heap ( because pointer is stored in stack and it points to words the Heap)
 ");
 
-    /* Y:  NOW 3 GOLDEN RULES: Tattow them.
+    /* Y:  NOW 3 (ABC) GOLDEN RULES: Tattow them.
      * --------------------------------------
-     *     1. Each value ==> must have OWNER.
-     *     2. 1 VAR = 1 OWNER( NO MORE NO LESS)
-     *     3. When Owner is Out Of SCOPE = value Die.
+     *   A-1. Each value ==> must have OWNER.
+     *   B-2. 1 VAR = 1 OWNER( NO MORE NO LESS)
+     *   C-3. When Owner is Out Of SCOPE = value Die.
+     *     4. when we assign value to another owner the value is MOVED SO OWNER Dies => "Inviladated".
+     *     5. when we assign a variable to anoteher it ether copy(Stack) or Moved (Heap)
+     *   DX:
+     *     6. when we assign a Heap variable to the functions ARGUMENT its like Aggisgining a Heap
+     *        value to Another Owner ∴ the orignal owner DIES.
+     *
      *
      *
      * B: eg.  STACK
@@ -166,7 +177,8 @@ b. accessing data in stack is faster > on Heap ( because pointer is stored in st
      *     G:   println!( sum );
      *      // sum is valid => do stuffs with Sum
      *     }
-     *     //DX: sum dead.
+     *     //Y: Sum Dies
+     *     IMP:{ RUST ALLOCATE AND DEALOCATE THE MEMORY IN HEAP AUTOMATICALLY} <<<<<<<<<<<<<<<<<<<<<<
      *=================================================*/
 
     let x = 5;
