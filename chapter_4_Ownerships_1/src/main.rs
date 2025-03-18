@@ -10,13 +10,36 @@ Memory management types:
    java | c# and all modern lagn.
   NOTE: garbage collectore automatically cleans its memory afer some time. everyting loads again for 1st time.
 
-2. Memory management  => too many Error + Hard/Slow Write | Small + Fast run + Very Much Controll(memory safe so its automatic).
+2. Memory management  => too many Error + Hard/Slow Write | Small + Fast run + Full Controll.
     C | C++ 
 
-3. Ownership Model    => No Err* + someWhat Hard and Slowest write | Small + Fast run + Full Controll.
+3. Ownership Model    => No Err* + someWhat Hard and Slowest write | Small + Fast run + vary much Controll (memory safe so its automatic).
     Rust = compail time memory check feature. (with 'unsafe' we can overwrite this.) Borrow checker.
 =============================================================================================== \n\n\n
 " );
+
+    /*   B: Memroy IN PROGRAM
+     *
+     *    INFO: 1. Heap                // FREE PULL
+     *       G: 2. Stack               // Fixed Sized Memory + Functions ( Variables, Arguments, Returns and Returniung Places)
+     *       Y: 3. Static / Global     // Global Variables
+     *       R: 4. Code                // Code Writen
+     *
+     * IMP:
+     *  while protram is compaliling  2,3,4 are calcualted.
+     *  while proram is runnigng the stack is changing while code and static/global stays.
+     *  while Fucntion is running its stack frame is changing after fun die  stack frame die.
+     *DX:
+     *  1.Stack = Call by Value. = value is in stack.
+     *  2.Heap = Call by reference = valuse is in Heap but pointer is in stack.
+     *  3.In C/C++ we allocate the memory from Heap with 'maloc/new' and dealocate with 'free/delete'
+     *  4.Dealocation is very very important in HEAP. because it is under our controll so unless we
+     *    clean it it will not get cleaned itself.
+     *
+     *
+     *
+     *
+     * */
 
     println!(
         " 
