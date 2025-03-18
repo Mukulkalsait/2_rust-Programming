@@ -199,14 +199,12 @@ fn function_1() -> String {
 *      👇👇👇👇👇👇👇👇👇👇👇👇👇👇
 */
 
-/* Just a return fucntion = Multiply
-*/
+/* Just a return fucntion = Multiply */
 fn return_function1(x: u32, y: u32) -> u32 {
     x * y
 }
 
-/* Just a return fucntion = Addition
-*/
+/* Just a return fucntion = Addition */
 fn short_return2(a: u32, b: u32) -> u32 {
     a + b
 }
@@ -214,16 +212,14 @@ fn short_return2(a: u32, b: u32) -> u32 {
 /** Array rutruning function
 *   we are returningn + * / % and - or 2 u32 vars
 *    in thi function in form of Array.
-*   return type [u32; 5]
-*/
+*   return type [u32; 5] */
 fn another_function(a: u32, b: u32) -> [u32; 5] {
     [a + b, a * b, a / b, a % b, b - a] // here b is bigger than a so b-a
 }
 
 /** if-elseif-else
  *  1. conduction must be EXPLICETYL "BULLEAN".  
- *  2. hence -> if (number) {...}  // will not work (number is not bull)
- */
+ *  2. hence -> if (number) {...}  // will not work (number is not bull) */
 fn if_else_fun1(a: u32) {
     if a < 50 {
         println!("num is small");
@@ -238,10 +234,7 @@ fn if_else_fun1(a: u32) {
     println!("Number = {}", num);
 }
 
-/* INFO: loops_in_rust
-*
-* */
-
+/* INFO: loops_in_rust */
 fn loops_in_rust() {
     // B: 1.Normal loop
     let mut flag: u32 = 0;
