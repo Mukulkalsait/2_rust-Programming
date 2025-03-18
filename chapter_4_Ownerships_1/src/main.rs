@@ -18,9 +18,9 @@ Memory management types:
 =============================================================================================== \n\n\n
 " );
 
-    /*   B: Memroy IN PROGRAM
+    /*   INFO: Memroy IN PROGRAM
      *
-     *    INFO: 1. Heap                // FREE PULL
+     *       B: 1. Heap                // FREE PULL
      *       G: 2. Stack               // Fixed Sized Memory + Functions ( Variables, Arguments, Returns and Returniung Places)
      *       Y: 3. Static / Global     // Global Variables
      *       R: 4. Code                // Code Writen
@@ -29,16 +29,22 @@ Memory management types:
      *  while protram is compaliling  2,3,4 are calcualted.
      *  while proram is runnigng the stack is changing while code and static/global stays.
      *  while Fucntion is running its stack frame is changing after fun die  stack frame die.
-     *DX:
-     *  1.Stack = Call by Value. = value is in stack.
-     *  2.Heap = Call by reference = valuse is in Heap but pointer is in stack.
-     *  3.In C/C++ we allocate the memory from Heap with 'maloc/new' and dealocate with 'free/delete'
-     *  4.Dealocation is very very important in HEAP. because it is under our controll so unless we
-     *    clean it it will not get cleaned itself.
-     *
-     *
-     *
-     *
+     * DX:
+     *  1. Stack = Call by Value. = value is in stack.
+     *  2. Heap = Call by reference = valuse is in Heap but pointer is in stack.
+     *  3. In C/C++ we allocate the memory from Heap with 'maloc/new' and dealocate with 'free/delete'
+     *  4. Dealocation is very very important in HEAP. because it is under our controll so unless we
+     *     clean it it will not get cleaned itself.
+     *  5. In stack the functions are arranged in order of their exicuaiotn Main is at lowest.
+     *  6. After main load it starts exicution of instide it.
+     *  7. As soon as a function is called inside the main it loads above Main , and if there si
+     *     another funciton inside that function it loads above that funcito. and soo on.
+     *  8. Allways the topmost function is running while the billow are waiting for the exicution
+     *     and resualt returning.
+     *  9. As one Fn ends the stack is cleared, with stack every Var, Arguments, and returntyps are
+     *     cleared inside the "STACK FRAME".
+     *  10.Unlike heap stack is 1.FiXED ins size, 2.Running while protram is running, 3.Cleans its
+     *     own stuffs.
      * */
 
     println!(
