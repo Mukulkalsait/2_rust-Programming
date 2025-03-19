@@ -4,23 +4,32 @@
 
 These methods are used for manipulating and working with `String` types.
 
+<!-- G: Easy to understand.===========================================-->
+
+- `contains()` = Checks if a `String` contains a given substring.
+- `find()` = Searches for the first occurrence of a substring.
+- `is_empty()` = Checks if the `String` has a length of zero.
+<!-- Y:checkers="👆"=============================================-->
+
 - `push_str()` = Appends a string slice to the end of the `String`.
 - `push()` = Adds a single character to the end of a `String`.
-- `len()` = Returns the number of bytes in the `String`.
-- `is_empty()` = Checks if the `String` has a length of zero.
-- `clear()` = Clears the content of a `String`, making it empty.
+- `remove()` = Removes a character at a specific index.
 - `replace()` = Replaces a substring with another substring.
-- `contains()` = Checks if a `String` contains a given substring.
+- `replace_range()` = Replaces a range of characters with a string slice.
+- `trim()` = Removes leading and trailing white space.
+
+- `clear()` = Clears the content of a `String`, making it empty.
+- `split_whitespace()` = Splits a string by whitespace.
+- `split()` = Splits a `String` by a delimiter into an iterator.
+
 - `to_uppercase()` = Converts all characters in the string to uppercase.
 - `to_lowercase()` = Converts all characters in the string to lowercase.
-- `trim()` = Removes leading and trailing whitespace.
-- `split()` = Splits a `String` by a delimiter into an iterator.
+<!-- Y:processors="👆"============================================= -->
+
 - `parse()` = Tries to parse a `String` into a given type.
-- `split_whitespace()` = Splits a string by whitespace.
+- `len()` = Returns the number of bytes in the `String`.
 - `format!()` = Creates a formatted string (similar to `sprintf`).
-- `replace_range()` = Replaces a range of characters with a string slice.
-- `remove()` = Removes a character at a specific index.
-- `find()` = Searches for the first occurrence of a substring.
+<!-- Y:converters="👆"============================================= -->
 
 ---
 
@@ -28,20 +37,25 @@ These methods are used for manipulating and working with `String` types.
 
 These methods are for manipulating and working with vectors (dynamic arrays).
 
+- `contains()` = Checks if an element exists in the `Vec`.
+- `is_empty()` = Checks if the `Vec` is empty.
+
+- `insert()` = Inserts an element at a specified index.
 - `push()` = Adds an element to the end of the `Vec`.
 - `pop()` = Removes the last element of the `Vec`.
-- `len()` = Returns the number of elements in the `Vec`.
-- `is_empty()` = Checks if the `Vec` is empty.
-- `clear()` = Clears all elements from the `Vec`.
 - `remove()` = Removes an element at a specified index.
-- `insert()` = Inserts an element at a specified index.
-- `retain()` = Retains elements in the `Vec` that match a condition.
-- `contains()` = Checks if an element exists in the `Vec`.
-- `iter()` = Returns an iterator over the elements in the `Vec`.
-- `extend()` = Extends the `Vec` with the elements of another iterator or collection.
+- `slice()` = Returns a slice of the `Vec` from a range of indices.
+
 - `sort()` = Sorts the elements of the `Vec`.
 - `reverse()` = Reverses the order of elements in the `Vec`.
-- `slice()` = Returns a slice of the `Vec` from a range of indices.
+
+ <!-- DX:No=underatanding============================================-->
+
+- `clear()` = Clears all elements from the `Vec`.
+- `len()` = Returns the number of elements in the `Vec`.
+- `retain()` = Retains elements in the `Vec` that match a condition.
+- `iter()` = Returns an iterator over the elements in the `Vec`.
+- `extend()` = Extends the `Vec` with the elements of another iterator or collection.
 - `deref()` = Provides access to the elements of a `Vec` through dereferencing.
 
 ---

@@ -22,7 +22,7 @@ fn main() {
     let x = 4;
     let y = 12;
 
-    println!("X = {x} and y + 2 = {}", y + 2);
+    println!("X = {x} and y + 2 = {} and z = {}", y + 2, 23);
 
 let anotherSecretNumber:u32 = rand::thread_rng().gen_range(1,1001);
     
