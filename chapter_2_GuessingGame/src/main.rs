@@ -1,18 +1,19 @@
 use colored::*;
 use rand::Rng;
 use std::cmp::Ordering;
-use std::{io, u32};
+// use std::{io, u32}; // prefiusly usign this but u32 was giving HINTS.
+use std::io;
 
 fn main() {
     println!(
         "|--------------------------------- Guessing Game !---------------------------------|"
     );
-    let secret_number = rand::thread_rng().gen_range(1, 101);
+    let secret_number = rand::thread_rng().gen_range(1, 1001);
 
     // println!("The secret number is : {}", secret_number);
 
     loop {
-        println!("😎 Please input your Guess:");
+        println!("😎 Please input your Guess in the range of 1 to 1000:");
         let mut guess = String::new();
         io::stdin()
             //Y: the lines billow are for reading of value and then returing resualt which is enum!!!
