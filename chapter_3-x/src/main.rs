@@ -57,17 +57,18 @@ fn main() {
      *  \       assigingin it higher value:                      \
      *  \    A. while DEBUG: rust will panic---                  \
      *  \    B. while RELEASE: rust will do wrapping....         \
-     *  \        if biger then num/255 reminder= assign.         \
-     *  \                                                        \
+     *  \       if biger then num/256 reminder= assign.          \
+     *  \       256=length here.                                 \
      *  \--------------------------------------------------------\
      * */
 
     // IMP:  2. FLOAT:
     let g = 2.0; //  G: float default f64 IMP"f32= float32"
     let h: f32 = 3.0; //  forcefully assgined f32
+    let higher_flot: f128 = 345.234; // so higher float is avialable but we havent run it.
 
     // IMP:  3. Boolean:
-    // Can be set or unset.
+    // Can be unset or Forcefully-set.
 
     let i = true; // un-set
     let j: bool = false; // B:set we forcerully set a bull here
@@ -78,12 +79,13 @@ fn main() {
      * \--------------------------\
      * \    unicode characters    \
      * \ allways in SINGLE COTE ''\
+     * \ ' ' is allways = UNICODE \
      * \==========================\
      */
 
     let k = 'z';
     let l = 'Z'; //captial "Z"
-    let heart_eyed_cat = '😻';
+    let heart_eyed_cat = '😻'; // i dont  know how did this became unicode ? 
 
     //DX:=========== B. Compuoun Data Type =======================================================================================================================================
 
@@ -94,10 +96,7 @@ fn main() {
      *    A. tup ( tupil)
      *    B. array
      *    C. fu
-     *
-     *
-     *
-     * */
+     **/
 
     /* IMP: TUPIL
      *  1. 1+values = tupil.
