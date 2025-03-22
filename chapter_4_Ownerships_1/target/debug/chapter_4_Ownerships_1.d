@@ -1,1 +1,1 @@
-/home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_4_Ownerships_1/target/debug/chapter_4_Ownerships_1: /home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_4_Ownerships_1/src/main.rs
+/home/mukuldk/1Home/1Projects/class/2_rust-Programming/chapter_4_Ownerships_1/target/debug/chapter_4_Ownerships_1: /home/mukuldk/1Home/1Projects/class/2_rust-Programming/chapter_4_Ownerships_1/src/main.rs

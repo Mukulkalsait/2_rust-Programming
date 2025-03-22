@@ -302,5 +302,5 @@ fn ownership_transfer_into_attribute(abcd: String) {
 }
 fn copy_from_stack(abcd: u32) {
     println!("{}", abcd);
-    println!("just changed the repo name.")
+    println!("just changed the repo name.");
 }
