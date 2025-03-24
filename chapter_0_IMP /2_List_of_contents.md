@@ -6,11 +6,12 @@
 <!-- Y: chapter_1: -->
 
 - how prontln!() = works
-  a. "{}{}", a, b
-  b. "{a}"
-  c. '' = unicode_char
-  d. OP.red() // use colored::\*; // library for colored OP
-  e. OP can contain "👆" emojis.
+a. "{}{}", a, b
+b. "{a}"
+c. '' = unicode_char
+d. OP.red() // use colored::\*; // library for colored OP
+e. OP can contain "👆" emojis.
+<!--DX: =============================================================================================== -->
 
 <!-- Y: chapter_2_guessing_game -->
 
@@ -19,28 +20,31 @@
 - LIBRARY :
   A. use std::io;
 
-       io::stdin()
-           //Y: the lines billow are for reading of value and then returing resualt which is enum!!!
-           .read_line(&mut guess)
-           .expect("Faleur to read line !!");
+         io::stdin()
+             //Y: the lines billow are for reading of value and then returing resualt which is enum!!!
+             .read_line(&mut guess)
+             .expect("Faleur to read line !!");
 
   B. use std::cmp::Ordering;
 
-       match guess.cmp(&secret_number) {
-           Ordering::Less => println!("{}", "Too Small 🔽".red()),
-           Ordering::Greater => println!("{}", "Too Big 🔼".red()),
-           Ordering::Equal => {break;}
-           }
+         match guess.cmp(&secret_number) {
+             Ordering::Less => println!("{}", "Too Small 🔽".red()),
+             Ordering::Greater => println!("{}", "Too Big 🔼".red()),
+             Ordering::Equal => {break;}
+             }
+
+  <!--DX: =============================================================================================== -->
 
 <!-- Y: chapter_3_1_variable_mutabliity -->
 
 - Mutablility = mut
 - defautl Non-Mutable
-  ∴ Shadowing with "let" again.
-  Shadowing With = different datatypes = 🆗
-  Shadowing With = different sizes = 🆗
-  Shadowing With = Calculation /or mathimetical equation = 🆗
-  -- Remember Ownership.
+∴ Shadowing with "let" again.
+Shadowing With = different datatypes = 🆗
+Shadowing With = different sizes = 🆗
+Shadowing With = Calculation /or mathimetical equation = 🆗
+-- Remember Ownership.
+<!--DX: =============================================================================================== -->
 
 <!-- Y: chapter_3_2_data_types_scaller  -->
 
@@ -50,6 +54,7 @@
 - float = 32/64 :
 - bull = un-set/ forcefully Set.
 - char = unicode and normal.
+<!--DX: =============================================================================================== -->
 
 <!-- Y: chapter_3_3_datatypes_compound -->
 
@@ -83,5 +88,7 @@
   -- loop {
   -- if condition{ break;}
   -- }
+
+<!--DX: =============================================================================================== -->
 
 <!-- Y: chapter_3_3_datatypes_compound -->
