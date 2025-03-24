@@ -3,7 +3,7 @@
 - 1_all_methods
 - 2_List
 
-chapter_1:
+<!-- Y: chapter_1: -->
 
 - how prontln!() = works
   a. "{}{}", a, b
@@ -12,7 +12,7 @@ chapter_1:
   d. OP.red() // use colored::\*; // library for colored OP
   e. OP can contain "👆" emojis.
 
-chapter_2_guessing_game
+<!-- Y: chapter_2_guessing_game -->
 
 - Bunch of LIBRARY's
 - and guessing game.
@@ -32,7 +32,7 @@ chapter_2_guessing_game
            Ordering::Equal => {break;}
            }
 
-chapter_3_1_variable_mutabliity
+<!-- Y: chapter_3_1_variable_mutabliity -->
 
 - Mutablility = mut
 - defautl Non-Mutable
@@ -42,9 +42,46 @@ chapter_3_1_variable_mutabliity
   Shadowing With = Calculation /or mathimetical equation = 🆗
   -- Remember Ownership.
 
-chapter_3_2_data_types_scaller --> IF-BC
+<!-- Y: chapter_3_2_data_types_scaller  -->
+
+@ IF-BC
 
 - int = signed/unsigned 8 to 128
 - float = 32/64 :
 - bull = un-set/ forcefully Set.
 - char = unicode and normal.
+
+<!-- Y: chapter_3_3_datatypes_compound -->
+
+# Tupil
+
+- tupil creation.
+- access
+  => dot method
+  => deconstruction with let(a,b,c)// total variables = tupil.values
+
+# Array
+
+- array creation // normal
+- @rules
+  1.  fixed size. or {use => VECTOR }
+  2.  same data sizes.
+- access in nomral way.
+
+# Fn
+
+- function creation.
+- return type fucntion creation.
+- Array return type.
+- if else:
+  -- if condition{}
+  -- else if condition{}
+  -- else {}
+- turnory operator
+  -- let variable = if condition {} else{};
+- loops in rust. // special
+  -- loop {
+  -- if condition{ break;}
+  -- }
+
+<!-- Y: chapter_3_3_datatypes_compound -->
