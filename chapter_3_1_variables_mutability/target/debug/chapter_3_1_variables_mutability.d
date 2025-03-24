@@ -1,1 +1,1 @@
-/home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_3_1_variables_mutability/target/debug/chapter_3_1_variables_mutability: /home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_3_1_variables_mutability/src/main.rs
+/home/mukuldk/1Home/1Projects/class/2_rust-Programming/chapter_3_1_variables_mutability/target/debug/chapter_3_1_variables_mutability: /home/mukuldk/1Home/1Projects/class/2_rust-Programming/chapter_3_1_variables_mutability/src/main.rs

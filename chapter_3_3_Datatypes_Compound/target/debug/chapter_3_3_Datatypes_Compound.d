@@ -1,1 +1,1 @@
-/home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_3_3_Datatypes_Compound/target/debug/chapter_3_3_Datatypes_Compound: /home/mukuldk/1Home/1Projects/class/rust-Programming/chapter_3_3_Datatypes_Compound/src/main.rs
+/home/mukuldk/1Home/1Projects/class/2_rust-Programming/chapter_3_3_Datatypes_Compound/target/debug/chapter_3_3_Datatypes_Compound: /home/mukuldk/1Home/1Projects/class/2_rust-Programming/chapter_3_3_Datatypes_Compound/src/main.rs

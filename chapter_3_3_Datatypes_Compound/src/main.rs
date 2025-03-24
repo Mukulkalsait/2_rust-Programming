@@ -13,13 +13,13 @@ fn tupil_creation() {
     println!(
         " 
                    Compound DT -> TAF
-           ---------------------------------------
-           |  It represents a group of values.   |
-           ---------------------------------------
-             A. tup ( tupil)
+           --------------------------------------------
+           | 'COMPOUND' represents a group of values. |
+           --------------------------------------------
+             A. tup (tupil)
              B. array
              C. fu
-           |-------------------------------------|
+           |------------------------------------------|
         "
     );
 
@@ -53,14 +53,14 @@ fn tupil_creation() {
                 1. Dot-Notatioon: 🩷 power_tupil :
 
                 |==========================|
-                      power_tupil[0]:{}|
-                      power_tupil[1]:{}|
-                      power_tupil[2]:{}|
-                      power_tupil[3]:{}|
-                      power_tupil[4]:{}|
-                      power_tupil[5]:{}|
-                      power_tupil[6]:{}|
-                      power_tupil[7]:{}|
+                      power_tupil[0] : {}|
+                      power_tupil[1] : {}|
+                      power_tupil[2] : {}|
+                      power_tupil[3] : {}|
+                      power_tupil[4] : {}|
+                      power_tupil[5] : {}|
+                      power_tupil[6] : {}|
+                      power_tupil[7] : {}|
             ",
         power_tupil.0,
         power_tupil.1,
@@ -72,21 +72,23 @@ fn tupil_creation() {
         power_tupil.7,
     );
 
-    let (a0, a1, a2, a3, a4, a5, a6, a7) = power_tupil; //NOTE: The number of variables must match the number of tupil valulse.
+    let (a0, a1, a2, a3, a4, a5, a6, a7) = power_tupil;
+    // NOTE: The number of variables must match the number of tupil valulse.
+    // Every VARIABLE will show its types in this form.
 
     println!(
         " 
                 2. De-stracturing : 💙 power_tupil :
 
                 |==========================|
-                      a0:{}|
-                      a1:{}|
-                      a2:{}|
-                      a3:{}|
-                      a4:{}|
-                      a5:{}|
-                      a6:{}|
-                      a7:{}|
+                      a0 : {}|
+                      a1 : {}|
+                      a2 : {}|
+                      a3 : {}|
+                      a4 : {}|
+                      a5 : {}|
+                      a6 : {}|
+                      a7 : {}|
             ",
         a0, a1, a2, a3, a4, a5, a6, a7
     );
@@ -110,7 +112,7 @@ fn array_cretion() {
                     (otherWise use VECTOR)
 
                 2. Creation: 
-                        a. let arrName = [ a , 'b', 23 , javan] 
+                        a. let arrName = [ 200, 404 , 500 ] // Type Sensitive.
                         
                         b. let arrayNm = [0;8] 
                             (in this line we are making array of \"8\" value whereas all 8 numbers are  \"0\")
@@ -119,7 +121,7 @@ fn array_cretion() {
             ");
 
     let error_code_array = [200, 404, 500];
-    let nof_found = error_code_array[1]; // = 404
+    let not_found = error_code_array[1]; // = 404
     let array_of_8_zeros = [0, 8];
 
     println!(
@@ -128,6 +130,10 @@ fn array_cretion() {
         error_code_array[1]: {} 
         error_code_array[2]: {}",
         error_code_array[0], error_code_array[1], error_code_array[2],
+    );
+    println!(
+        "Also we are printing values of not_found : {}, \n and array_of_8_zeros.0 : {}",
+        not_found, array_of_8_zeros[0]
     );
 }
 
@@ -171,6 +177,10 @@ fn function_1() -> String {
     let resualt1 = return_function1(sum_array[0], sum_array[1]);
     let resualt2 = short_return2(sum_array[2], sum_array[3]);
     let resualt3 = another_function(sum_array[4], sum_array[5]);
+    println!(
+        "This is how we create a function : \n{}",
+        return_function_writing()
+    );
 
     println!("\n=======================================================================\n");
     for each_element in resualt3.iter() {
@@ -199,17 +209,39 @@ fn function_1() -> String {
 *      👇👇👇👇👇👇👇👇👇👇👇👇👇👇
 */
 
-/* Just a return fucntion = Multiply */
+/* FUN: Here I explain how a function wiht return type is writeen!.
+* */
+fn return_function_writing() -> String {
+    String::from(
+        "====================================================
+while writgin return function make sure to add 
+ ' - > '  and ' retrun type '
+
+between () and {{}}
+
+so the general syntex is like 
+ 
+-------------------------------------------
+fn function_name(x: u32 , y:u32) -> u32 {
+  x * y
+}
+-------------------------------------------
+",
+    )
+}
+
+/* FUN: Just a return fucntion = Multiply */
 fn return_function1(x: u32, y: u32) -> u32 {
     x * y
 }
 
-/* Just a return fucntion = Addition */
+/* FUN: Just a return fucntion = Addition */
 fn short_return2(a: u32, b: u32) -> u32 {
     a + b
 }
 
-/** Array rutruning function
+/** IMP: ARRAY RETURN
+* FUN:  Array rutruning function
 *   we are returningn + * / % and - or 2 u32 vars
 *    in thi function in form of Array.
 *   return type [u32; 5] */
@@ -217,7 +249,7 @@ fn another_function(a: u32, b: u32) -> [u32; 5] {
     [a + b, a * b, a / b, a % b, b - a] // here b is bigger than a so b-a
 }
 
-/** if-elseif-else
+/** FUN: if-elseif-else
  *  1. conduction must be EXPLICETYL "BULLEAN".  
  *  2. hence -> if (number) {...}  // will not work (number is not bull) */
 fn if_else_fun1(a: u32) {
@@ -227,14 +259,14 @@ fn if_else_fun1(a: u32) {
         println!("a : {} is equal !!", a);
     } else {
         println!("a : {} is alleready greter.", a);
-    }
+    };
 
     let conduction = true;
-    let num = if conduction { 5 } else { 6 };
+    let num = if conduction { 5 } else { 6 }; // IMP: Turnary Operator.
     println!("Number = {}", num);
 }
 
-/* INFO: loops_in_rust */
+/* FUN: loops_in_rust */
 fn loops_in_rust() {
     // B: 1.Normal loop
     let mut flag: u32 = 0;
