@@ -88,6 +88,8 @@ fn memory_info() {
      *  and   arr is pointer stored in
      *   G:  Stack.
      *   DX: HENSE WE USE ARRAYS LIKE  =>  Arr[n].
+     *   ⭐ to access the array the var we decleared will have CPL of heap inside Stack so CPL will
+     *      be taken from stack and then heap will be searched. => heap is slow
      * */
 
 ");
@@ -117,20 +119,22 @@ fn memory_info() {
      *     and resualt returning.
      *  9. As a Fn ends its stack is cleared, with stack every Var, Arguments, and returntyps are
      *     cleared inside the 'STACK FRAME'.
+     *
+     * G: A1: STACK :----------------------------------------
      *  10. Unlike HEAP 'STACK' is:
      *           1.FiXED in size,
      *           2.Consistently Running while protram is running,
      *           3.Makes and Cleans its Own Shit.
-     *   11. If in any case the Memory requirement of stack goes beyond the memory it has,
-     *      ===> its ' STACK OFERFLOW '  { Program Crash. }
+     *  11. If in any case the Memory requirement of stack goes beyond the memory it has,
+     *      ===> its ' STACK OFERFLOW '  {{ Program Crash. }}
      *
-     *  B: HEAP :
+     * G: A2: HEAP :-----------------------------------------
      *   1. We Tell the compailar to assign a value to heap in C/C++/ and rust.
      *   2. when it happens Stack stores
      *        Pointer  = Ptr
      *        Length   = Len
      *        Capacity = Cp
-     *       inside the 'stack' => this is what help us find the Heap we stored.
+     *      inside the 'stack' => this is what help us find the Heap we stored.
      *   3. if we store a Array in heap it Stored in the order we gave from billow to upwords.
      *    eg. arr = [a, b, c, d, e]
      *    in heap it wil be
@@ -145,6 +149,9 @@ fn memory_info() {
      *  and   arr is pointer stored in
      *   G:  Stack.
      *   DX: HENSE WE USE ARRAYS LIKE  =>  Arr[n].
+     *    --------------------------------------------------
+     *   ⭐ to access the array the var we decleared will have CPL of heap inside Stack so CPL will
+     *      be taken from stack and then heap will be searched. => heap is slow
      * */
 
     println!(
