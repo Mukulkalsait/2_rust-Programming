@@ -99,3 +99,11 @@ Shadowing With = Calculation /or mathimetical equation = 🆗
        a. Garbage
        b. Memory management
        c. Ownerhip modules.
+
+    2. memory_info()
+       a. Heap(reference)/Stack(value)/Static(global)/code => parts of memory
+       b. Heap vs Stack and explanations.
+       c. Heap storage with stack help.
+       d. Stack and Stack Frame Stracture,
+
+    3.

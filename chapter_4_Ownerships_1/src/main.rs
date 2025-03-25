@@ -30,7 +30,8 @@ Memory management types:
 " );
 }
 
-/* FUN: Use of memory while Runnign "Programs". */
+/* FUN: Use of memory while Runnign "Programs".
+* Stack vs Heap + explanations stracture.*/
 fn memory_info() {
     println!( "
     /*  INFO: Memroy IN PROGRAM
