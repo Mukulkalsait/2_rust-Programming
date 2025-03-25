@@ -91,4 +91,11 @@ Shadowing With = Calculation /or mathimetical equation = 🆗
 
 <!--DX: =============================================================================================== -->
 
-<!-- Y: chapter_3_3_datatypes_compound -->
+<!-- Y: chapter_3_4_ownership_1 -->
+
+# Fu
+
+    1. memory_management()
+       a. Garbage
+       b. Memory management
+       c. Ownerhip modules.

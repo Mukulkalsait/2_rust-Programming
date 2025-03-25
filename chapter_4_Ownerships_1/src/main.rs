@@ -11,11 +11,12 @@ fn main() {
     example_two();
 }
 
+/* FUN: Memoryo Management in Java/C/C++/Rust
+ **/
 fn memory_management() {
     println!( "\n\n\n
-
 Memory management types: 
-
+------------------------------------------------------------------------------------------------
 1. Garbage Collection => No Err + Easy/Fast Write | Large + Slow run + No Control.
    java | c# and all modern lagn.
   NOTE: garbage collectore automatically cleans its memory afer some time. everyting loads again for 1st time.
@@ -28,6 +29,8 @@ Memory management types:
 =============================================================================================== \n\n\n
 " );
 }
+
+/* FUN: Use of memory while Runnign "Programs". */
 fn memory_info() {
     println!( "
     /*  INFO: Memroy IN PROGRAM
@@ -38,8 +41,8 @@ fn memory_info() {
      *     R: 4. Code                // Code Writen
      *
      *  DX:
-     *  while protram is compaliling  2,3,4 are calcualted.
-     *  while proram is runnigng the stack data is changing {{  not Size  }} while code and static/global stays.
+     *  while program is compaliling  2,3,4 are calcualted.
+     *  while program is runnigng the stack data is changing {{  not Size  }} while code and static/global stays.
      *  while Fucntion is running its stack frame is changing after fun die  stack frame die.
      *  Y:
      *  1. Stack = Call by Value. = value is in stack.
@@ -171,6 +174,8 @@ Memory types in rust:
 =============================================================================================== "
     );
 }
+
+/* FUN: for example_two */
 fn example_one() {
     let x = 5;
     let y = x; // Copy
@@ -221,6 +226,8 @@ a. pushing in stack is faster > allocating memory in heap.
 b. accessing data in stack is faster > on Heap ( because pointer is stored in stack and it points to words the Heap)
 ");
 }
+
+/* FUN: for example_two */
 fn golden_rules() {
     println!(
         " 
@@ -274,6 +281,8 @@ fn golden_rules() {
      *   ∴ simple things get Copyed in RUST. ==> Copy Trate.
      * */
 }
+
+/* FUN: for example_two */
 fn example_two() {
     /* Y:
      *   => uncomment the code to understand
@@ -296,10 +305,12 @@ fn example_two() {
      */
 }
 
-/* Y: for example_two */
+/* FUN: for example_two */
 fn ownership_transfer_into_attribute(abcd: String) {
     println!("{}", abcd);
 }
+
+/* FUN: for example_two */
 fn copy_from_stack(abcd: u32) {
     println!("{}", abcd);
     // println!("just changed the repo name.");
