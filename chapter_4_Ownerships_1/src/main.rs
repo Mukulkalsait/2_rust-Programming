@@ -292,7 +292,7 @@ fn golden_rules() {
      * */
 }
 
-/* FUN: for example_two */
+/* FUN:  Ownership transfer even with ARGUMENTS in Function. */
 fn example_two() {
     /* Y:
      *   => uncomment the code to understand
@@ -315,12 +315,12 @@ fn example_two() {
      */
 }
 
-/* FUN: for example_two */
+/* FUN: Ownership Transfer. */
 fn ownership_transfer_into_attribute(abcd: String) {
     println!("{}", abcd);
 }
 
-/* FUN: for example_two */
+/* FUN: Copy Trait. */
 fn copy_from_stack(abcd: u32) {
     println!("{}", abcd);
     // println!("just changed the repo name.");
