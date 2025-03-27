@@ -185,7 +185,7 @@ Memory types in rust:
     );
 }
 
-/* FUN: for example_two */
+/* FUN: copy of stack and ownership of heap. and Ownership. */
 fn example_one() {
     let x = 5;
     let y = x; // Copy
@@ -237,7 +237,7 @@ b. accessing data in stack is faster > on Heap ( because pointer is stored in st
 ");
 }
 
-/* FUN: for example_two */
+/* FUN: HEAP IMPORTANCE + golden_rules of ONWERSHIP */
 fn golden_rules() {
     println!(
         " 

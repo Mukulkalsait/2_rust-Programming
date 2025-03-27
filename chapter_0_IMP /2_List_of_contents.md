@@ -106,4 +106,21 @@ Shadowing With = Calculation /or mathimetical equation = 🆗
        c. Heap storage with stack help.
        d. Stack and Stack Frame Stracture,
 
-    3.
+    3. example_one()
+       a. how giving one variable to other will just copy them if they are in stack. (Copy Trate in RUST.)
+       b. how same with heap will not work as owhership is there.
+       c. ownership transferr and death of preimary owner.
+       d. String::from() => heap.
+       e.
+
+    4. golder_rules()
+       a. HEAP IMPORTANCE
+       b. golden_rules of ONWERSHIP
+       c. STACK IMPORTANCE.
+      *d. Heap In rust is controlled.
+
+    5. example_two()
+       a. ownership transfer even with ARGUMENTS in Function.
+
+      6.  ownership_transfer_into_attribute(attribute): owhership transfer
+      7.  copy_from_stack(attribute): copy trait.
