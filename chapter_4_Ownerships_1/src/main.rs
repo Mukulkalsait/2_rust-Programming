@@ -302,26 +302,40 @@ fn ownership_working_methods() {
      *   => whereas variabnles stored inside
      *   stack are copyed instead.
      */
-    let s = String::from("mukul");
-    ownership_transfer_into_attribute(s);
-    // println!("{}", s); //IMP: UNCOMMENT
 
+    // P1a:   A
     let a: u32 = 23;
     copy_from_stack(a);
     println!("{}", a);
 
-    /* Y: both the functions are same but just because one variable is stored in heap
-     *     we cannot treate it same.
-     */
+    // P1a:   B
+    let s = String::from("mukul");
+    ownership_transfer_into_attribute(s);
+    // println!("{}", s); //IMP: UNCOMMENT
+
+    // P1a:   C
     let ownership_taken = gives_ownership();
     println!("{ownership_taken}");
+
+    /* Y: both the functions A and B  are same,
+     *    but just because one variable is stored in heap
+     *    we cannot treate it same. */
+
+    //P2c:  NOW we will do something greate --->
+
+    let tripple_return_string = String::from("I am going to run 3 times...  ⴻⴻⴻⴻⴻ");
+    ownership_transfer_into_attribute(tripple_return_string)
 }
 
+/* FUN_2: Copy Trait. */
+fn copy_from_stack(abcd: u32) {
+    println!("{}", abcd);
+    // println!("just changed the repo name.");
+}
 /* FUN_2: Ownership Transfer. */
 fn ownership_transfer_into_attribute(abcd: String) {
     println!("{}", abcd);
 }
-
 /* FUN_2: Copy Trait. */
 fn copy_from_stack(abcd: u32) {
     println!("{}", abcd);
