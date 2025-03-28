@@ -322,9 +322,9 @@ fn ownership_working_methods() {
      *    we cannot treate it same. */
 
     //P2c:  NOW we will do something greate --->
-
-    let tripple_return_string = String::from("I am going to run 3 times...  ⴻⴻⴻⴻⴻ");
-    ownership_transfer_into_attribute(tripple_return_string)
+    let tripple_return_string_1 = String::from("I am going to run 3 times...  ⴻⴻⴻⴻⴻ");
+    let tripple_return_string_2 = takes_and_gives_ownersip(tripple_return_string_1);
+    println!("{}", tripple_return_string_2);
 }
 
 /* FUN_2: Copy Trait. */
@@ -332,18 +332,20 @@ fn copy_from_stack(abcd: u32) {
     println!("{}", abcd);
     // println!("just changed the repo name.");
 }
+
 /* FUN_2: Ownership Transfer. */
 fn ownership_transfer_into_attribute(abcd: String) {
     println!("{}", abcd);
-}
-/* FUN_2: Copy Trait. */
-fn copy_from_stack(abcd: u32) {
-    println!("{}", abcd);
-    // println!("just changed the repo name.");
 }
 
 /* FUN_2: Returning a heap value will kill the returning variable. */
 fn gives_ownership() -> String {
     let returning_value = String::from("Hey i am geting Return... 옜");
     returning_value
+}
+
+/* FUN_2: Takes Ownership in Atribute and return Ownership in Return Value.*/
+fn takes_and_gives_ownersip(taken: String) -> String {
+    let given = taken;
+    given
 }
