@@ -4,11 +4,11 @@ fn main() {
 =============================================================================================== "
     );
 
-    memory_management(); //  INFO: Memory Management in different Languages.
-    memory_info(); //        IMP:  VERY IMP MEMORY WORKAEOUND IN PROGRAMS
-    example_one(); //        INFO: Real EXample 1:
-    golden_rules(); //       IMP:  VERY IMP INFO ON HEAP AND STACK
-    example_two();
+    memory_management(); //          INFO: Memory Management in different Languages.
+    memory_info(); //                 IMP: VERY IMP MEMORY WORKAEOUND IN PROGRAMS
+    example_one(); //                INFO: Real EXample 1:
+    golden_rules(); //                IMP: VERY IMP INFO ON HEAP AND STACK
+    ownership_working_methods(); //   IMP: This contain some examples to show owherships.
 }
 
 /* FUN: Memoryo Management in Java/C/C++/Rust
@@ -293,7 +293,7 @@ fn golden_rules() {
 }
 
 /* FUN:  Ownership transfer even with ARGUMENTS in Function. */
-fn example_two() {
+fn ownership_working_methods() {
     /* Y:
      *   => uncomment the code to understand
      *   how variables stored inside HEAP is
@@ -313,15 +313,23 @@ fn example_two() {
     /* Y: both the functions are same but just because one variable is stored in heap
      *     we cannot treate it same.
      */
+    let ownership_taken = gives_ownership();
+    println!("{ownership_taken}");
 }
 
-/* FUN: Ownership Transfer. */
+/* FUN-2: Ownership Transfer. */
 fn ownership_transfer_into_attribute(abcd: String) {
     println!("{}", abcd);
 }
 
-/* FUN: Copy Trait. */
+/* FUN-2: Copy Trait. */
 fn copy_from_stack(abcd: u32) {
     println!("{}", abcd);
     // println!("just changed the repo name.");
+}
+
+/* FUN-2: Returning a heap value will kill the returning variable. */
+fn gives_ownership() -> String {
+    let returning_variable = String::from("Hey i am returning. 🆗");
+    returning_variable
 }
