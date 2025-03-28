@@ -317,19 +317,19 @@ fn ownership_working_methods() {
     println!("{ownership_taken}");
 }
 
-/* FUN-2: Ownership Transfer. */
+/* FUN_2: Ownership Transfer. */
 fn ownership_transfer_into_attribute(abcd: String) {
     println!("{}", abcd);
 }
 
-/* FUN-2: Copy Trait. */
+/* FUN_2: Copy Trait. */
 fn copy_from_stack(abcd: u32) {
     println!("{}", abcd);
     // println!("just changed the repo name.");
 }
 
-/* FUN-2: Returning a heap value will kill the returning variable. */
+/* FUN_2: Returning a heap value will kill the returning variable. */
 fn gives_ownership() -> String {
-    let returning_variable = String::from("Hey i am returning. 🆗");
-    returning_variable
+    let returning_value = String::from("Hey i am geting Return... 옜");
+    returning_value
 }
