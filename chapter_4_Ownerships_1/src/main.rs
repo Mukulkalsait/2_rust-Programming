@@ -9,6 +9,7 @@ fn main() {
     example_one(); //                INFO: Real EXample 1:
     golden_rules(); //                IMP: VERY IMP INFO ON HEAP AND STACK
     ownership_working_methods(); //   IMP: This contain some examples to show owherships.
+    reference_and_uses(); //          IMP: Thsi is how we use References.
 }
 
 /* FUN: Memoryo Management in Java/C/C++/Rust
@@ -348,4 +349,8 @@ fn gives_ownership() -> String {
 fn takes_and_gives_ownersip(taken: String) -> String {
     let given = taken;
     given
+}
+
+fn reference_and_uses() {
+    println!("==============");
 }
