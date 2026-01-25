@@ -13,5 +13,8 @@ rust-maintain= "rustup update && rustup component add rust-analyzer rust-src cli
 
 ## for maintaining : 
 
-    - rustup toolchain list
+    - rustup toolchain list => list ----------
+    - rustup toolchain uninstall <name>
+    - rustup component remove <comp_name> 
+    - rustup self update {then use}=> $ rustup prune
 
