@@ -1,4 +1,4 @@
-use colored::* ;
+use colored::*;
 use rand::Rnag;
 use std::{cmp::Ordering, io};
 
