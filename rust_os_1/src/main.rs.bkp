@@ -1,0 +1,66 @@
+// use std::ffi::CString;
+// use libc::{execvp, fork, getpid, getppid, wait};
+use nix::unitd::{fork,ForkResualt,getpid,getppid};
+
+
+fn main() {
+    get_parent_child_pids();
+    // proper_fork_one();
+    // fork_and_exec_application();
+}
+
+
+fn get_parent_child_pids(){
+    unsafe{
+        let pid = fork();
+        if pid == 0{
+            println!("Child Process: {}",getpid());
+        }else {
+            println!("Parent Process: {}",getpid());
+        }
+    }
+// Y: Practice: fork exec wait pipe dup epoll |
+// Trace them using: strace ls
+// strace ./target/debug/<ProgrameName>
+}
+
+// fn proper_fork_one(){
+//     match unsafe { fork() }{
+//         Ok(FokrResualt::Child)=> {
+//             println!("| CHILD | ");
+//             println!("Child Pid: {}",getpid());
+//             println!("Parent Pid: {}", getppid());
+//         }
+//         OK(ForkResualt::Parent{child}) => {
+//             println!("| PARENT | ");
+//             println!("Child Pid: {}",getpid());
+//             println!("Parent Pid: {}", child());
+//
+//             wait().expect("Faild to wait");
+//             println!("Parent Recieved the child dead signal from kernal");
+//         }
+//         Err(_) => {Println("Fork Faild.")}
+//
+//     }
+// }
+
+// fn fork_and_exec_application(){
+//     match unsafe {fork()}{
+//         Ok(ForkResualt::Child) => {
+//             println!("Child ran now exec function runngin: ");
+//             let cmd = CString::new("ls").unwrap();
+//             let args = [cmd.clone()];
+//             execvp(&cmd, &args).expect("Exec Faild");
+//         }
+//         Ok(ForkResualt::Parent{Child}) => {
+//             println!("Parent: Waiting for child {}", Child);
+//             wait().expect("Waiting Failed");
+//             println!("Parent Child Complete.");
+//         }
+//         Err(_) => println!("Fork Faild")
+//
+//     }
+// }
+
+
+
