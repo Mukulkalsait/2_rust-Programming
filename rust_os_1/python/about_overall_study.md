@@ -325,3 +325,79 @@ Think like an engineer.
 
 Once you answer that,
 we design both programs properly — at same depth as before.
+
+
+## 🔹 1️⃣ Basic daemon wrapper
+
+Run program in background and detach properly.
+
+---
+
+## 🔹 2️⃣ Auto restart on crash
+
+Like `monitor` but inside same program.
+
+---
+
+## 🔹 3️⃣ Restart with max retry count
+
+Restart only 3 times then stop.
+
+---
+
+## 🔹 4️⃣ Restart with exponential backoff
+
+1s → 2s → 4s → 8s
+
+Very common SRE question.
+
+---
+
+## 🔹 5️⃣ PID file implementation
+
+Store child PID in file.
+Prevent duplicate runs.
+
+---
+
+## 🔹 6️⃣ Only one instance allowed
+
+If already running → exit.
+
+---
+
+## 🔹 7️⃣ Graceful shutdown handling
+
+Forward SIGTERM to child.
+
+---
+
+## 🔹 8️⃣ Timeout execution
+
+Kill child if running longer than X seconds.
+
+---
+
+## 🔹 9️⃣ Logging wrapper
+
+Redirect output to log file.
+
+---
+
+## 🔹 🔟 Process tree cleanup
+
+Kill entire process group.
+
+---
+
+## 🔹 1️⃣1️⃣ Monitor multiple commands
+
+Run 3 commands and restart individually.
+
+---
+
+## 🔹 1️⃣2️⃣ Simple mini-systemd
+
+Config file with services and restart policies.
+
+---
