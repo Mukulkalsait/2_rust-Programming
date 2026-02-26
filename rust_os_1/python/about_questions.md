@@ -1,8 +1,29 @@
 
-Ohhh this is a **very good** assignment.
+>    Exact 2 Coding Questions (verbatim from real InfStones Application Engineer round)
+>    Program 1: forever
+>
+>    Takes one argument (the name of a program to run, e.g. ./forever sleep 10).
+>    Every time you run it, it starts that program as a background process with a unique PID.
+>    All processes run forever until manually killed.
+>    Should handle multiple instances.
+>
+>    Program 2: monitor
+>
+>    Takes one argument — the name of the program it should watch (the same one forever starts).
+>    Continuously checks if any process started by forever dies.
+>    If any dies, automatically restarts it with the same command.
+>    Should keep running and monitoring.
+>
+>    (You upload both files or paste both in the platform.)
+>
+>    one more thign before moving forward
+>    we started with program  1 and buiold someting but that is different form the quesiton 1 i dont know why i felt like that? 
+>    also we have to go through the similar kind of sinereos, even if the question are conform i want to be prepared for atleast more 10 thiks kind of programs, 
+>    what are the other things they can give in this program lets discuss that first then we will move with others. what are the thigns we can do here? all basic to mid basic level questions.
+
+==========================================================
 
 Now it makes sense why Program 1 was called `forever`.
-
 This is not just process spawning — this is about:
 
 * Process discovery
