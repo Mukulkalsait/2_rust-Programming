@@ -1,15 +1,3 @@
-# B: Monitor.py
-# * Process detection * Monitoring * Restart logic * Matching processes started by forever * Avoid duplicate restarts * Keep running continuously
-#
-# G: Program 2 — monitor
-# Takes one argument — the name of the program it should watch | Continuously checks if any process started by forever dies | 
-# If any dies, automatically restarts it with the same command | Should keep running and monitoring
-#
-# B: We need:
-# A way to identify processes started by forever | A way to know if they die
-# A way to know how to restart them | A way to avoid duplicate restarts
-# Continuous monitoring loop
-
 
 import os
 import sys
@@ -41,9 +29,11 @@ def process_alive(pid):
     except PermissionError:
         return True
 
+
 def restart_process(cmd):
-    print(f"Restartingt Process: '{' '.join(cmd)}'")
-    process = subprocess.Popen(cmd)
+    print(f"Restarting via forever: {' '.join(cmd)}")
+    process = subprocess.Popen(["python3", "forever.py"] + cmd)
+
     with open(REG_FILE, "w") as f:
         f.write(f"{process.pid} {' '.join(cmd)}\n")
     return process.pid
