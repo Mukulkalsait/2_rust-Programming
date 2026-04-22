@@ -42,7 +42,7 @@ pub fn serilise_data() {
 pub fn deserilise_data() {
     let json_string = r#"
     {
-    "name": "Julie",
+    "dogName": "Julie",
     "breed": "dobarman",
     "gender": "female",
     "dogAge": 2017,
