@@ -1,0 +1,25 @@
+total 56
+21890934 drwxr-xr-x 4 mukuldk users 4096 Feb 25 12:12 ..
+21890892 -rw-r--r-- 1 mukuldk users 2193 Feb 25 12:36 sys_fork.py
+21920329 -rw-r--r-- 1 mukuldk users 4585 Feb 25 18:39 problem_1a.py
+21890971 -rw-r--r-- 1 mukuldk users 2003 Feb 25 19:51 problem_1b.py
+21890909 -rwxr-xr-x 1 mukuldk users 6403 Feb 25 23:35 about_questions.md
+21890907 -rw-r--r-- 1 mukuldk users 2358 Feb 25 23:39 problem_1c.py
+21890945 -rw-r--r-- 1 mukuldk users  171 Feb 26 00:48 monitor.py
+21890940 -rw-r--r-- 1 mukuldk users 6318 Feb 26 00:56 about_overall_study.md
+21890677 -rw-r--r-- 1 mukuldk users    0 Feb 26 15:45 output.logs
+21920333 -rw-r--r-- 1 mukuldk users    0 Feb 26 15:45 error.logs
+21920334 -rw-r--r-- 1 mukuldk users 1413 Feb 26 16:26 for.py
+21890947 -rw-r--r-- 1 mukuldk users 1459 Feb 26 16:52 forever.py
+21920365 drwxr-xr-x 2 mukuldk users 4096 Feb 26 16:52 .
+about_overall_study.md
+about_questions.md
+error.logs
+forever.py
+for.py
+monitor.py
+output.logs
+problem_1a.py
+problem_1b.py
+problem_1c.py
+sys_fork.py
