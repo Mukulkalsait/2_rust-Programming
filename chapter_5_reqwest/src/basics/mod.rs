@@ -38,11 +38,9 @@ pub struct UploadResponse {
 }
 
 /// send jsondata.
-fn login_user(client: &Client) {
-    let resualt_1 = client
-        .post("http://localhost:3000/login")
-        .json(&LoginRequest { email: "mukul@gmail.com".to_string(), passwd: "qwer123".into() })
-        .send();
+fn login_user(client: &Client) -> Result<LoignResualt, reqwest::Error> {
+    let login_request_data: LoginRequest = LoginRequest { email: "mukul@gmail.com".into(), passwd: "qwerty123".into() };
+    client.post("http://localhost:3000/login").json(&login_request_data).send()?.json() //  Y:  we used the "?" here
 }
 
 // basic query function
@@ -108,7 +106,12 @@ fn client_builder_config() -> Client {
 pub fn main_usage() {
     let client_builder_var = client_builder_config();
 
-    login_user(&client_builder_var);
+    println!("|  LoginRequest  |");
+    match login_user(&client_builder_var) {
+        Ok(data) => println!("✅ Success:\n {:#?}", data),
+        Err(err) => println!("❌ Faild:\n {:#?}", err),
+    }
+
     search_request(&client_builder_var);
     auth_request(&client_builder_var);
     file_uploading(&client_builder_var);
