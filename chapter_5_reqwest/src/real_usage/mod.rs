@@ -1,3 +1,4 @@
+use reqwest::Response;
 use reqwest::blocking::multipart::{self, Form}; // file accessing
 use reqwest::blocking::{Client, ClientBuilder};
 use reqwest::redirect::Policy; // builder policies
@@ -13,7 +14,27 @@ pub struct LoginRequest {
 
 #[derive(Debug, Deserialize)]
 pub struct LoignResualt {
-    token: String,
+    token: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct SearchResponse {
+    results: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct AuthResponse {
+    results: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct ProfileReponse {
+    results: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct UploadResponse {
+    results: Vec<String>,
 }
 
 /// send jsondata.
@@ -22,49 +43,48 @@ fn login_user(client: &Client) {
         .post("http://localhost:3000/login")
         .json(&LoginRequest { email: "mukul@gmail.com".to_string(), passwd: "qwer123".into() })
         .send();
-    error_handling_printer(resualt_1);
 }
 
 // basic query function
-fn client_request(client: &Client) {
-    let client_request = client.get("http://localhost:3000/search").query(&[("q", "rust"), ("page", "1")]).send();
-    error_handling_printer(client_request);
+fn search_request(client: &Client) {
+    let res = client.get("http://localhost:3000/search").query(&[("q", "rust"), ("page", "1")]).send().unwrap();
+    let data: SearchResponse = res.json().unwrap();
+    println!("SearchResponse:\n{:#?}", data);
 }
 
 /// basic auth funciton
 fn auth_request(client: &Client) {
-    let auth_request = client.get("http://localhost:3000/profile").bearer_auth("TOKEN").send();
-    error_handling_printer(auth_request);
+    let res = client.get("http://localhost:3000/profile").bearer_auth("TOKEN").send().unwrap();
+    let data: AuthResponse = res.json().unwrap();
+    println!("AuthResponse:\n{:#?}", data)
 }
 
 /// file uploading funciton
 fn file_uploading(client: &Client) {
     let form = multipart::Form::new().file("file", "cat.png").unwrap();
-    // Y:  unwrap here gives the T inside Result<T,E> part
-    error_handling_printer(client.post("http://localhost:3000/file").multipart(form).send());
+    let res = client.post("http://localhost:3000/file").multipart(form).send().unwrap(); // Y:  unwrap here gives the T inside Result<T,E> part
+    let data: UploadResponse = res.json().unwrap();
+    println!("UploadResponse:\n{:#?}", data);
 }
 
 #[tokio::main]
 /// Inside Tokio, .await is available only for async functions/futures. Your client is still blocking: reqwest::blocking::Client so .send() returns a Result immediately.
 async fn tokio_request_function(client: &Client) {
-    let body = client.get("https://api.github.com").send();
-    error_handling_printer(body);
+    let res = client.get("https://api.github.com").send().unwrap();
+    let data: SearchResponse = res.json().unwrap();
+    println!("BODY:\n{:#?}", data);
 }
 
 /// Unversal function for handling errors
-fn error_handling_printer(res: Result<reqwest::blocking::Response, reqwest::Error>) {
+fn error_handling_printer(res: Result<Response, reqwest::Error>) -> Option<Response> {
     match res {
-        Ok(response) => match &response.status().as_u16() {
-            200 => {
-                println!("------------OK------------");
-                let data: LoignResualt = response.json().unwrap();
-                println!("{:#?}", data);
-            }
-            404 => println!("------------NOT FOUND------------"),
-            _ => println!("------------OTHER------------"),
-        },
+        Ok(response) => {
+            println!("Status: {}", response.status());
+            Some(response)
+        }
         Err(err) => {
-            println!("{:#?}", err)
+            println!("{:#?}", err);
+            None
         }
     }
 }
@@ -89,7 +109,7 @@ pub fn main_usage() {
     let client_builder_var = client_builder_config();
 
     login_user(&client_builder_var);
-    client_request(&client_builder_var);
+    search_request(&client_builder_var);
     auth_request(&client_builder_var);
     file_uploading(&client_builder_var);
 }
