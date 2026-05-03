@@ -1,5 +1,6 @@
 use reqwest::blocking::Response;
 use serde::Deserialize;
+use tokio::io::join;
 
 ///## 1:
 /// any type T can be deserilize from JSON
@@ -16,7 +17,7 @@ use serde::Deserialize;
 ///   FOR => FOR ALL.
 ///   no loop because-> no iteration/runtimeLoop, its just a rule (compile time).
 ///   eg
-///   ```rust
+///   ```
 ///   fn foo<T>()
 ///   where
 ///     T: for<'a> Trait<'a>{}
