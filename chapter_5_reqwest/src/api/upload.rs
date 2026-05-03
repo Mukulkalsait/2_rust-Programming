@@ -11,3 +11,9 @@ pub fn upload_file(client: &Client) -> Result<UploadResponse, Box<dyn std::error
 
     get_json(res)
 }
+
+pub fn upload_file2(client: &Client) -> Result<UploadResponse, Box<dyn std::error::Error>> {
+    let form: Form = multipart::Form::new().file("file", "cat.png").unwrap();
+    let res = client.post("http://localhost:3000/file").multipart(form).send()?;
+    get_json(res)
+}
