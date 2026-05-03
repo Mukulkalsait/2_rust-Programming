@@ -34,6 +34,23 @@ fn main() {
             println!("Upload Error:\n{:#?}", err);
         }
     }
+    match search::search_request2(&client) {
+        Ok(data) => {
+            println!("Search2:\n{:#?}", data);
+        }
+        Err(err) => {
+            println!("Search2 Error:\n{:#?}", err);
+        }
+    }
+
+    match upload::upload_file2(&client) {
+        Ok(data) => {
+            println!("Upload:\n{:#?}", data);
+        }
+        Err(err) => {
+            println!("Upload Error:\n{:#?}", err);
+        }
+    }
 
     // tests_reqwest::testing_rewest_func();
     // real_usage::main_usage();
