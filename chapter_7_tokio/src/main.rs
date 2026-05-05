@@ -28,6 +28,7 @@ impl Racer {
         if lap_time.is_some() && lap_time.unwrap() < self.best_lap_time {
             self.best_lap_time = lap_time.unwrap();
         }
+        self.completed_laps += 1;
     }
 }
 
@@ -35,7 +36,10 @@ impl std::future::Future for Racer {
     type Output = u8; // Y: we only need the "best_lap_time" HENCE onlyl u8
 
     fn poll(self: std::pin::Pin<&mut Self>, cx: &mut std::task::Context<'_>) -> std::task::Poll<Self::Output> {
-        if self.completed_laps < self.total_laps {}
+        if self.completed_laps < self.total_laps {
+            self.get_mut().do_lap();
+            return std::task::Poll::Pending;
+        }
 
         std::task::Poll::Ready(self.best_lap_time)
     }
