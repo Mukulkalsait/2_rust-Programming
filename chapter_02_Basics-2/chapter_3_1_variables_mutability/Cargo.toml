@@ -1,0 +1,6 @@
+[package]
+name = "chapter_3_1_variables_mutability"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
