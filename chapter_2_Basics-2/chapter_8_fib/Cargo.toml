@@ -1,6 +1,0 @@
-[package]
-name = "chapter_8_fib"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
