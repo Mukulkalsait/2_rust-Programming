@@ -1,3 +1,6 @@
+use std::io::Result;
+
+use color_eyre::eyre::bail;
 use crossterm::event::{KeyCode, KeyEvent};
 /// FILE: /src/app_state/state.rs
 use ratatui::{self, style::Stylize};
@@ -15,11 +18,16 @@ impl AppState {
     fn exit(&mut self) {
         self.exit = true;
     }
-    fn increment_counter(&mut self) {
+    fn increment_counter(&mut self) -> color_eyre::eyre::Result<()> {
         self.counter += 1;
+        if self.counter > 2 {
+            bail!("🐦‍🔥 Connter Overflow.")
+        }
+        Ok(())
     }
-    fn decrement_coutner(&mut self) {
+    fn decrement_coutner(&mut self) -> color_eyre::eyre::Result<()> {
         self.counter -= 1;
+        Ok(())
     }
     //============================================= Fundamental implimentations,
 
@@ -29,7 +37,7 @@ impl AppState {
     }
 
     // acutal run function which draw terminal in loop.
-    pub fn run(&mut self, terminal: &mut ratatui::DefaultTerminal) -> std::io::Result<()> {
+    pub fn run(&mut self, terminal: &mut ratatui::DefaultTerminal) -> color_eyre::eyre::Result<()> {
         while !self.exit {
             terminal.draw(|frame| self.draw(frame))?;
             self.handle_events()?;
@@ -38,13 +46,14 @@ impl AppState {
     }
 
     /// TEST ======================================================================================
-    fn handle_key_events(&mut self, key_event: crossterm::event::KeyEvent) {
+    fn handle_key_events(&mut self, key_event: crossterm::event::KeyEvent) -> color_eyre::eyre::Result<()> {
         match key_event.code {
             KeyCode::Char('q') => self.exit(),
             KeyCode::Left => self.decrement_coutner(),
             KeyCode::Right => self.increment_counter(),
             _ => {}
         }
+        Ok(())
     }
 
     /// handling properly the events,
