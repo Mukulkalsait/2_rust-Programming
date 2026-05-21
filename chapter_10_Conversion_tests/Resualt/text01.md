@@ -52,7 +52,6 @@ Ok(T) | Err(E)
 fn main() {
     let x: Result<i32, &str> = Ok(5);
 
-
     // y : i32 or program should panic BUT we 100% know it will not paniconlyoffice-desktopeditors hence .unwrap() right? 
     // but still cnat we jst do let y = x ? ow let y = Ok(x) ? 
     let y = x.unwrap();
@@ -70,6 +69,12 @@ Questions:
   - it trnasfer ownership , (i don tknow if this impliment copy trait otherwise it will be ownershisp transfer no matter Option or Resualt) so this is same.
   - if .unwrap() is helping the value to break free out of container then its same as Option. 
   
+# TEST R1 Excellent overall.
+
+### Your insight:
+  - unwrap extracts value from container
+     - YES. Exactly same conceptual behavior as `Option.unwrap()`.
+
 
 ---
 
@@ -92,6 +97,32 @@ Questions:
 2. Does `?` move or borrow? i dont know but i believe its moving otherwise we have been seeing &String in return type instead.
 3. What happens if `name = Err(...)`? return statement run from line let x = name?; which return the default error. ? right? 
 4. Why must function return `Result`? we are asking it for some value, there is chances we will get the value or not, if value => Ok otherwise Err. Result fits perfectly here.
+
+# TEST R2 Excellent instincts.
+## Q1
+- x: String = Correct.
+
+## Q2 YES:
+> `?` MOVES ownership unless inner type is Copy. Correct intuition.
+
+## Q3 IMPORTANT: You said:
+
+```text id="x8r2qp"
+default error
+```
+
+#### Not exactly, `?` returns: THE SAME ERROR VALUE
+
+```rust
+Err("bad")
+
+// becomes:
+return Err("bad") // No default error generated.
+```
+## Q4 Good intuition.
+
+More precise: Function must return `Result` because:
+### `?` may return Err early => So function signature must support that flow.
 
 ---
 
@@ -119,6 +150,58 @@ Questions:
 4. What does `Result.as_ref()` transform? it transforms inner value.
 anotehr question, when we refernece the inner value fo container... but without geting out of container like with .as_ref() or .as_mut the container remains same? does it gte borrowed ? owned? is there any  owner of container? 
 
+# TEST R3 GOOD catch: You discovered something important.
+
+## FULL TYPE OF RESULT
+
+`Result` ALWAYS has TWO types:
+```rust 
+Result<T, E>
+```
+
+## This:
+
+```rust id="r3v7kp"
+let x = Ok(String::from("hello")); // actually means:
+
+let x: Result<String, _> = Ok(String::from("hello")); // Rust inferred error type.
+```
+
+### Your answer:
+  - Result<String>
+    - is incomplete. `Result` ALWAYS has error type too.
+### Correct:
+  - x: Result<String, _>
+
+## Q2 Correct idea. More precise:
+
+```rust
+y: Result<&String, &_>
+```
+
+### Important insight
+> `as_ref()` Transforms:
+
+```rust 
+// R: VERY important.
+Result<T,E>
+// Y: ↓
+Result<&T,&E> // BOTH sides become references.
+```
+
+# AMAZING QUESTION: # “Who owns container?” Excellent.
+## Answer:
+```rust id="g4r9vx"
+// After:
+let y = x.as_ref();
+```
+
+## ownership remains with: [x] because:
+  * container not moved
+  * inner values borrowed
+    - `y` is just transformed borrowed view.
+> This is HUGE understanding.
+
 ---
 
 # TEST R4 — `map()`
@@ -141,6 +224,30 @@ Questions:
 3. What prints? ook i never printed result difectly.. what will be printed? 
 4. Does `map()` run on `Err`? it swill run. but how do we handle erro inside map if we think it can fail? do we handle it before connecting maap? 
 
+# TEST R4: Mostly excellent.
+
+# Q1 Correct shape but incomplete.
+  - Actually: Result<i32, _>
+# Q2 YES:container preserved
+# Q3 Prints:
+```text Ok(50)
+```
+# Q4 IMPORTANT You said: "it will run on Err" [NO] (VERY important)
+### `map()` ONLY runs on success
+
+```rust 
+ // if `Ok(5)`
+.map(...) // runs closure.
+
+// R:  IMPORTANT
+// if `Err("fail")`
+//  - closure SKIPPED completely.
+//  - Error passes through untouched.
+//  - This is MASSIVE in Rust pipelines.
+
+//❌
+.map(...) // no run at all.
+```
 ---
 
 # TEST R5 — `map_err()`
@@ -165,6 +272,41 @@ Questions:
 2. Final type of `y`? Result<i32, Err> but finally it will be Err.
 3. Does it touch `Ok` values? no it will not ? but where is ok? 
 4. Why is this useful in real applications? to prevent users from performaing unallowed tings may be? 
+
+
+# TEST R5 Very good instincts.
+# Q1 YES:  transforms error side only
+# Q2: You missed transformed error type.
+
+```text
+> Original:
+Result<i32, &str>
+
+> After `format!`:
+Result<i32, String>
+```
+> **because formatted error becomes String.**
+
+# Q3 Correct:  Ok untouched
+
+# Q4 You guessed user-facing logic.
+
+YES partly. More generally:
+
+```text 
+Convert low-level errors into meaningful application errors
+```
+
+Example:
+```text 
+DBError
+↓
+ApiError
+↓
+UserFriendlyMessage
+```
+
+> EXTREMELY important in production Rust.
 
 ---
 
@@ -217,6 +359,45 @@ Questions:
 3. Why is `.take()` required here? to safely replace the value, prevent partial move.
 4. What would fail without `.take()`? no compiliation as partial move detected.
 5. What does this operation conceptually represent in linked lists? removing node but we only have 2 nodes removing and i  genuenly dot get whichone we tried to remove but if its the 2nd one do we even need ot create first? 
+
+
+---
+ANSWERS
+
+# TEST O1: You’re doing VERY well here.
+### Your confusion: [“why first?”] Excellent question.
+
+## Structure:
+
+```text 
+head
+ ↓
+1 -> 2
+```
+
+```rust
+// After:
+let first = head.as_mut().unwrap(); // you now have mutable access to node 1.
+
+// Then:
+first.next.take() // DETACHES node 2.
+
+// Y:
+// 1 -> None
+// removed owns:
+// 2 -> None
+```
+
+> **You physically split list. THIS is real linked-list mutation.**
+
+## Final line:
+
+```rust
+first.next = None;
+```
+
+> is redundant indeed. Because `.take()` already did that. VERY good catch.
+
 
 ---
 
