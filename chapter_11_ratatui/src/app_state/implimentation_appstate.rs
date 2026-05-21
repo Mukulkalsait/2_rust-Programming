@@ -43,8 +43,7 @@ impl AppState {
                 self.handle_key_events(key_event)
             }
             _ => Ok(()),
-        };
-        Ok(())
+        }
     }
 
     /// Fairly simple one run the function from keycodes.
