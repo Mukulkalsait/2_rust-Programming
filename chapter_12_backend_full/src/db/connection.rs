@@ -1,6 +1,6 @@
 // FILE: /src/db/connections.rs
 
-use sqlx::{Pool, Postgres, postgres};
+use sqlx::{postgres, Pool, Postgres};
 
 #[derive(Debug, Clone)]
 pub struct DBClient {
@@ -8,7 +8,5 @@ pub struct DBClient {
 }
 
 impl DBClient {
-    pub fn new(pool: Pool<sqlx::Postgres>) -> Self {
-        DBClient { pool }
-    }
+    pub fn new(pool: Pool<sqlx::Postgres>) -> Self { DBClient { pool } }
 }

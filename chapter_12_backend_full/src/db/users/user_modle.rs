@@ -19,7 +19,7 @@ impl UserRole {
     }
 }
 
-#[derive(Debug, sqlx::FromRow, sqlx::Type, Clone)]
+#[derive(Debug, sqlx::FromRow, sqlx::Type, Clone, serde::Serialize, Deserialize)]
 pub struct User {
     pub id: uuid::Uuid,
     pub name: String,

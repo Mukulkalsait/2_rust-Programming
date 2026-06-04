@@ -89,6 +89,17 @@ impl UserExt for DBClient {
         Ok(users)
     }
 
+
+    /// /// Save User
+    /// async fn save_user(
+    ///     &self,
+    ///     name: Option<&str>,
+    ///     email: Option<&str>,
+    ///     password: Option<&str>,
+    ///     verification_token: Option<DateTime<Utc>>,
+    ///     token_expire_at: Option<DateTime<Utc>>,
+    /// ) -> Result<User, sqlx::Error>;
+
     async fn save_user(
         &self,
         name: Option<&str>,
