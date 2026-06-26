@@ -1,0 +1,16 @@
+# this is specifal file 
+  - contain other informaiton
+  - contain other informaiton
+  - contain other informaiton
+  - contain other informaiton
+  - contain other informaiton
+  - contain other informaiton
+
+
+```rust 
+fn main(){
+  todo!()
+}
+```
+
+> fn with different lang
