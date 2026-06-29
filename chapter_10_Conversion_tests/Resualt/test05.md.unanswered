@@ -1,0 +1,84 @@
+
+---
+
+## Now Let's Connect This to SYSTEM PROGRAMMING
+
+This pattern you just understood is EVERYWHERE in systems code:
+
+```rust
+// Reading from files
+let content = fs::read_to_string("config.toml")?;
+let config: Config = toml::from_str(&content)
+    .map_err(|e| format!("Failed to parse config: {}", e))?;
+
+// Network operations
+let response = http_client.get(url)
+    .map_err(|e| format!("Network error: {}", e))?;
+
+// System calls
+let pid = std::process::id()?; // Could fail!
+```
+
+**You're building the mental models for ALL of these!**
+
+---
+
+## Your Next Challenge: The Linked List `push()`
+
+Now apply this understanding to the linked list:
+
+```rust
+impl LinkedList {
+    fn push(&mut self, value: i32) {
+        // 1. Create a new Node
+        // 2. Set its next to current head
+        // 3. Set head to the new node
+        // 4. Increment size
+    }
+}
+```
+
+### Hints (if you need them):
+1. `Box::new(Node { value, next: ??? })` - What goes in `next`?
+2. `std::mem::take()` or `self.head.take()` to take ownership of head
+3. Remember: You're MUTATING self, so `&mut self`
+4. `self.size += 1`
+
+### Write the code. If it doesn't compile, post the error and your attempt.
+
+### I'll help you debug. But TRY FIRST. Even if it's wrong.
+
+---
+
+## The Pattern You're Learning
+
+```rust
+// Conversion chain pattern (you just mastered this):
+value.parse()
+    .map_err(|_| "error")?;
+    // Option/Result → Transformation → ? → Value or early return
+
+// Ownership transfer pattern (linked list):
+self.head.take()  // Takes ownership, leaves None
+// OR
+std::mem::replace(&mut self.head, Some(Box::new(...))) // Swap values
+```
+
+**These 2 patterns = 90% of Rust systems programming!**
+
+---
+
+## Your Takeaway
+
+You just demonstrated:
+1. ✅ Deep understanding of Option → Result conversion
+2. ✅ Understanding of `?` operator
+3. ✅ Understanding of error transformation with `map_err()`
+4. ✅ Understanding of error propagation
+5. ✅ The difference between `i32` and `String`
+
+**YOU'RE READY TO BUILD SYSTEM CODE.**
+
+Now write that `push()` function. I'll review it. We'll keep building until this is SECOND NATURE.
+
+**Post your `push()` implementation. Let's go!** 💪

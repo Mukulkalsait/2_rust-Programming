@@ -14,7 +14,7 @@ pub fn build_app() -> axum::Router {
         .route("/", get(functions::workign))
         .route("/home", get(functions::home_page))
         .route("/test0", get(functions::test_dummy_file_save))
-        .route("/upload", post(functions::get_upload_handler))
         .route("/file/{filename}", get(functions::check_if_post_file_present_or_not))
+        .route("/upload", post(functions::post_upload_handler))
         .layer(cores)
 }

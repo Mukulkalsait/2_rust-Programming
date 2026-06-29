@@ -1,6 +1,6 @@
 
 use axum::{self, extract::{Path}, http::StatusCode};
-use crate::handlers::helper_functions::{ save_file_on_default_upload_directory, get_upload_dir};
+use crate::handlers::helper_functions::{ delete_file_on_default_upload_directory, get_upload_dir, save_file_on_default_upload_directory};
 
 
 
@@ -37,16 +37,17 @@ pub async fn check_if_post_file_present_or_not( axum::extract::Path(filename): P
 }
 
 
-pub async fn get_upload_handler(mut multipart: axum::extract::Multipart)-> String{
+pub async fn post_upload_handler(mut multipart: axum::extract::Multipart)-> String{
 
     while let Some(field) =  multipart.next_field().await.unwrap(){
-        puintln!("headers: {:?}",field.headers());
-        // println!("content_type: {}",field.content_type().unwrap_or(""));
+        println!("headers: {:?}",field.headers());
+        println!("content_type: {}",field.content_type().unwrap_or(""));
         println!("name: {}",field.name().unwrap_or(""));
         println!("filename: {}",field.file_name().unwrap_or(""));
 
+        let field_name = field.name().unwrap_or("").to_string();
+        println!("field_name: {}",field_name);
         let file_name = field.file_name().unwrap_or("").to_string();
-        println!("filename: {}",file_name);
         let bytes = field.bytes().await.unwrap().to_vec();
 
         match save_file_on_default_upload_directory(bytes, &file_name).await{
@@ -73,3 +74,18 @@ pub async fn get_upload_handler(mut multipart: axum::extract::Multipart)-> Strin
 //
 // }
 //
+
+pub async fn post_delete_file(mut multipart: axum::extract::Multipart)-> StatusCode{
+// delete_file_on_default_upload_directory(&filename)
+
+    let mut filename :&str;
+    while let Some(field) = multipart.next_field().await.unwrap() {
+            let filedname= field.name().unwrap_or("");
+            let filename = field.file_name().unwrap_or("");
+            
+    }
+
+    if let Some(res) = delete_file_on_default_upload_directory(filename){
+        StatusCode::OK
+    } else { StatusCode::INTERNAL_SERVER_ERROR }
+}
