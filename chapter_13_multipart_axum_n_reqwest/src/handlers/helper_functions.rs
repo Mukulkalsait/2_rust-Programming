@@ -44,3 +44,102 @@ pub async fn save_file_on_default_upload_directory(bytes: Vec<u8>, orignal_filen
     std::fs::write(&save_path, bytes)?;
     Ok(uploading_filename)
 }
+
+// Struct:
+pub struct FileEntry {
+    name: String,
+    size: u64,
+}
+
+// Struct:
+pub struct FileResponse {
+    all_files: Vec<FileEntry>,
+    count: usize,
+}
+
+/// >>> Awesome Concept found here
+///  1. when we do read_dir() it returns -> Result<ReadDir,Error>               G: 1
+///  2. match with Ok/Err return the same things just to get inner value        G: 2
+///  3. now we got inner value that is ReadDir which is an ITERATOR             G: 3
+///  4. now loop over and we get each_entry with type Result<DirEntry, Error>   G: 4
+///  5. Match and get inner value DirEntry                                      G: 5
+///  6. NOW DirEntry has its Methods like .path()                               G: 6
+///
+///
+/// ```
+/// // So basically we have:                                                    IMP:
+///   Result<ReadDir:Result<DirEntry.Impls, Error>, Error>
+/// ```
+pub fn list_folder(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
+    let mut file_names = Vec::new();
+
+    let directory_read = std::fs::read_dir(get_upload_dir()); // Y: 1
+
+    // Y: 2 & 3
+    let directory_read_result = match directory_read {
+        Ok(dir_res) => dir_res,
+        Err(e) => return Err(e), // direct Error return
+    };
+
+    // Y: 4
+    for each_entry in directory_read_result {
+        // Y: 5
+        let entry = match each_entry {
+            Ok(entry) => entry,
+            Err(e) => {
+                eprintln!("Faild to read file: {}", e);
+                continue;
+            }
+        };
+        let path = entry.path(); // Y: 6
+    }
+
+    Ok(())
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
