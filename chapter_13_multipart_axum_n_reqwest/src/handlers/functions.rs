@@ -6,7 +6,7 @@ use axum::{
     Json,
     extract::{Multipart, Path, Query},
     http::StatusCode,
-    response::ErrorResponse,
+    response::{ErrorResponse, IntoResponse},
 };
 
 // Y: ============================================================================ Basic fn
@@ -131,20 +131,9 @@ struct FileListResponse {
     total_size: u64,
 }
 
-pub async fn list_downloads() {
-    let path = get_upload_dir();
-    let files = std::fs::read_dir(path);
-
-    let entries = match files {
-        Ok(read_dir) => read_dir,
-        Err(e) => {
-            return match Some(e) = e.kind() {
-                std::io::ErrorKind::NotFound => StatusCode::NOT_FOUND,
-                std::io::ErrorKind::PermissionDenied => StatusCode::FORBIDDEN,
-                _ => StatusCode::INTERNAL_SERVER_ERROR,
-            };
-        }
-    };
+pub async fn get_all_files_handler() {
+    // return impl IntoResponse
+    todo!();
 }
 
 //
