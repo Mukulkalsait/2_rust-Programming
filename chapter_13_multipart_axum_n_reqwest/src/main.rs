@@ -3,7 +3,6 @@ mod handlers;
 
 #[tokio::main]
 async fn main() {
-
     let app = app::build_app();
     let listener = tokio::net::TcpListener::bind(get_addr()).await.unwrap();
 
@@ -11,8 +10,8 @@ async fn main() {
     axum::serve(listener, app).await.unwrap();
 }
 
-fn get_addr()-> String{
+fn get_addr() -> String {
     let ip = "0.0.0.0";
     let port = "3000";
-    format!("{}:{}",ip, port)
+    format!("{}:{}", ip, port)
 }
