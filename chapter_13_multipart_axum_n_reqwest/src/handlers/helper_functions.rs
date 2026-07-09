@@ -1,3 +1,7 @@
+use std::ffi::OsStr;
+
+use axum::Error;
+
 /// providing default upload directory into root/upload
 ///  => if present return , else create and return
 pub fn get_upload_dir() -> String {
@@ -63,19 +67,23 @@ pub struct FileResponse {
 ///  3. now we got inner value that is ReadDir which is an ITERATOR             G: 3
 ///  4. now loop over and we get each_entry with type Result<DirEntry, Error>   G: 4
 ///  5. Match and get inner value DirEntry                                      G: 5
-///  6. NOW DirEntry has its Methods like .path()                               G: 6
+///  6. NOW DirEntry has its Methods like .path() and return -> PathBuf         G: 6
+///  7. NOW PathBof has iss methods like .file_name() -> OsString type name     G: 7
 ///
 ///
 /// ```
 /// // So basically we have:                                                    IMP:
 ///   Result<ReadDir:Result<DirEntry.Impls, Error>, Error>
 /// ```
-pub fn list_folder(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
-    let mut file_names = Vec::new();
+pub fn list_folder_x(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
+    let mut all_file_list = Vec::new();
 
-    let directory_read = std::fs::read_dir(get_upload_dir()); // Y: 1
+    let directory_read = std::fs::read_dir(folder_path); // Y: 1
 
     // Y: 2 & 3
+    //
+    // can be replaced by just :
+    // let directory_read_result = directory_read?;
     let directory_read_result = match directory_read {
         Ok(dir_res) => dir_res,
         Err(e) => return Err(e), // direct Error return
@@ -91,10 +99,55 @@ pub fn list_folder(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
                 continue;
             }
         };
-        let path = entry.path(); // Y: 6
-    }
+        // let file_metadata = entry.metadata(); //  Result<Metadata, Error>
+        // let file_type = entry.file_type(); // Result<FileType,Error>
+        let file_path = entry.path(); // Result<PathBuf, Err>  Y: 6 
 
-    Ok(())
+        if file_path.is_file() {
+            // Ref: 7
+            if let Some(file_name) = file_path.file_name() {
+                if let Some(file_name_string) = file_name.to_str() {
+                    all_file_list.push(file_name_string.to_string());
+                }
+            }
+        }
+    } // Loop End:
+
+    all_file_list.sort(); // for consistant resualt
+    Ok(all_file_list)
+}
+
+/// try to understand the list_folder_x() function its the same but extreamly optimised edmotic version.
+pub fn list_all_files_in_folder(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
+    let mut all_files_in_folder = Vec::new();
+
+    match std::fs::read_dir(folder_path) {
+        Ok(directory) => {
+            for each_files in directory {
+                match each_files {
+                    Ok(inner_file) => {
+                        let file_path = inner_file.path(); // need filename from PathBuf
+                        if let Some(file_name) = file_path.file_name().and_then(|n| n.to_str()) {
+                            all_files_in_folder.push(file_name.to_string());
+                        }
+                    }
+                    Err(e) => {
+                        eprintln!("Faild to read file: {}", e);
+                        continue;
+                    }
+                }
+            }
+            all_files_in_folder.sort();
+            Ok(all_files_in_folder)
+        }
+        Err(e) => match e.kind() {
+            std::io::ErrorKind::NotFound => {
+                // if directory not found empty vec return
+                Ok(Vec::new())
+            }
+            _ => Err(e),
+        },
+    }
 }
 
 //
