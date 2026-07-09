@@ -1,5 +1,4 @@
-mod app;
-mod handlers;
+use chapter_13_multipart_axum_n_reqwest::app;
 
 #[tokio::main]
 async fn main() {
