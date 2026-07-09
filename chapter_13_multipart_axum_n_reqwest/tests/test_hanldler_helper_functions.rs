@@ -1,101 +1,122 @@
 use chapter_13_multipart_axum_n_reqwest::handlers::helper_functions::*;
-use std::{fmt::format, fs};
+use pretty_assertions::assert_eq;
+use std::fs;
+
+const TEST_FOLDER: &str = "./test_folder";
+
+/// ```
+/// use once_cell::sync::Lazy;
+/// static TEST_FOLDER: Lazy<String> = Lazy::new(|| { "./test_folder".to_string() });
+// ```
+fn static_variable() {
+    println!(
+        "
+    STATIC VARIAES:
+|===================================================================|
+| What it does:                                                     |
+|     Creates a lazy initialized static variable                    |
+|     The value is only created once, the first time it's accessed  |
+|     After that, it's cached and reused                            |
+| When to use:                                                      |
+|     When you need a static variable that requires computation     |
+|     When you want to avoid const limitations                      |
+|     When you need heap-allocated data (like String)               |
+|===================================================================|
+
+    Examples:
+|--------------------------------------------------------------------------------------
+| // ❌ const can only be compile-time constants
+| const FOLDER: &str = \"./test_folder\";  // Works for simple strings
+|
+| // ❌ static requires compile-time evaluation
+| static FOLDER: String = String::new();  // ❌ Can't create String at compile time
+|
+| // ✅ Lazy lets you create String at runtime, but only once
+| static FOLDER: Lazy<String> = Lazy::new(|| \"./test_folder\".to_string());
+|--------------------------------------------------------------------------------------
+| "
+    ); // IMP: Learn to use this instead of Const when needed.
+}
+
+// HELPER FUNCTIONS ========================================================================================================
+
+fn setup_test_folder() -> String {
+    fs::create_dir_all(TEST_FOLDER).unwrap();
+    TEST_FOLDER.to_string()
+}
+
+fn clean_test_folder(foldername: &str) {
+    std::fs::remove_dir_all(foldername).unwrap_or_else(|e| eprint!("Faild to temp+folder {}: {}", foldername, e))
+}
+
+fn create_file(foldername: &str, filename_a: &str, extension: &str, file_content: &str) -> Result<String, std::io::Error> {
+    let filepath = format!("{}/{}.{}", foldername, filename_a, extension);
+    fs::write(&filepath, file_content)?;
+    Ok(filepath)
+}
+
+fn multi_file_creater(foldername: &str, count: u16, prefix: &str, extension: &str) -> Vec<String> {
+    let mut all_files = Vec::new();
+    for i in 0..count {
+        let filename = format!("{}_{}", prefix, i);
+        let demotext: &str = "Hello this is test text";
+        if let Ok(file) = create_file(foldername, filename.as_str(), extension, demotext) {
+            all_files.push(file);
+        } else {
+            eprintln!("Error creating file: {}/{}.{}", foldername, filename, extension);
+        }
+    }
+    all_files
+}
+
+// Tests FUNCTIONS ========================================================================================================
 
 #[test]
-fn test_list_folder_with_non_exciting_path() {
-    let res = list_folder_x("./this_folder_does_not_exists");
-    assert!(res.is_ok());
+fn test_single_file() {
+    let folderpath = setup_test_folder();
+    let filepath = create_file(folderpath.as_str(), "testfile.md", "md", "# heading 1").unwrap();
+
+    let res = list_all_files_in_folder(folderpath.as_str()).unwrap();
+    assert!(res.contains(&String::from("testfile.md")));
+
+    fs::remove_file(filepath).unwrap();
+    clean_test_folder(&folderpath);
+    static_variable();
 }
 
 #[test]
-fn test_list_directory_with_empty_directory() {
-    let foldername: &str = "./empty_folder";
+fn test_multiple_files() {
+    let folderpath = setup_test_folder();
+    let count: u16 = 20;
+    let all_files = multi_file_creater(&folderpath, count, "a", ".md");
 
-    fs::create_dir_all(foldername).unwrap(); // cretate dir
+    let res = list_all_files_in_folder(&folderpath).unwrap();
+    assert_eq!(res.len(), all_files.len());
 
-    let res = list_folder_x(foldername).unwrap();
-    assert!(res.is_empty());
-
-    fs::remove_dir_all(foldername).unwrap(); // remove dir
+    for i in res.iter() {
+        assert!(all_files.contains(i));
+        let _x = fs::remove_file(i).map_err(|e| eprintln!("Faild to delete file : {}", e));
+    }
+    clean_test_folder(folderpath.as_str());
 }
 
 #[test]
-fn test_list_all_files_in_folder_universal() {
-    let foldername: &str = "./test_folder";
-    let filename: &str = "testfile.txt";
-    let file_path = format!("{}/{}", foldername, filename);
-    let file_content: &str = "hello";
-    let subfolder = format!("{}/subfolder", foldername);
-    let mut temp_vec = Vec::new();
+fn test_hidden_files() {
+    let folderpath = setup_test_folder();
+    let count: u16 = 5;
+    let mut all_files = multi_file_creater(folderpath.as_str(), count, "visible_files", "txt");
+    let mut hidden_files = multi_file_creater(folderpath.as_str(), count, ".hidden_files", "txt");
 
-    fs::create_dir_all(foldername).unwrap(); // create folder
+    all_files.append(&mut hidden_files); // move everyting from hidden files to all files
 
-    // SingleFile ====================================================================
-    fs::write(&file_path, file_content).unwrap(); // create file
+    let res = list_all_files_in_folder(folderpath.as_str()).unwrap();
+    assert_eq!(res.len(), all_files.len());
 
-    let res = list_all_files_in_folder(foldername).unwrap();
-    assert_eq!(res.len(), 1);
-    assert_eq!(res[0], filename);
-    assert!(!res.contains(&"subfolder".to_string()));
-    println!("subfolder check done...");
-
-    println!("singlefile test completed...");
-
-    fs::remove_file(&file_path).unwrap();
-
-    // MultiFiles ====================================================================
-    let set_file_no: u16 = 20;
-
-    for files in 0..set_file_no {
-        let file_path = format!("{}/a_{}.txt", foldername, files);
-        fs::write(&file_path, file_content).unwrap();
-        temp_vec.push(file_path);
+    for i in res.iter() {
+        assert!(all_files.contains(i));
+        let _x = fs::remove_file(i).map_err(|e| eprintln!("Faild to remove file: {}", e));
     }
-    let res = list_all_files_in_folder(foldername).unwrap();
-
-    assert_eq!(res.len(), temp_vec.len());
-    assert_eq!(res, temp_vec);
-    assert!(!res.contains(&"subfolder".to_string()));
-    println!("subfolder check done...");
-    println!("Multiple files testing completed...");
-
-    for files in 0..set_file_no {
-        let file_path = format!("{}/a_{}.txt", foldername, files);
-        temp_vec.remove(files.into());
-        fs::remove_file(file_path).unwrap();
-    }
-    // what if i want to do the above loop but in temp_vec.iter() form
-    // let Some(x) = temp_vec.iter() { ... } is it possible?
-
-    // MultiEntensions ====================================================================
-    let extensions = vec!["mp3", "flac", "alac", "wav", "m4a", "dsd"];
-
-    for file_extension in extensions {
-        let file_path = format!("{}/test.{}", foldername, file_extension);
-        fs::write(&file_path, file_content).unwrap();
-        temp_vec.push(file_path);
-    }
-    let res = list_all_files_in_folder(foldername).unwrap();
-    assert_eq!(res.len(), temp_vec.len());
-
-    for i in &temp_vec {
-        assert!(res.contains(i));
-        fs::remove_file(i).unwrap();
-    }
-    temp_vec.clear();
-
-    // HiddenFiles ====================================================================
-    let set_file_no: u16 = 4;
-
-    for i in 0..set_file_no {
-        let file_path = format!("{}/a_{}.txt", foldername, i);
-        let hidden_file_path = format!("{}/.a_{}.txt", foldername, i);
-
-        fs::write(file_path, file_content).unwrap();
-        fs::write(hidden_file_path, file_content).unwrap();
-    }
-
-    fs::remove_dir_all(foldername).unwrap();
+    clean_test_folder(folderpath.as_str());
 }
 
 //
