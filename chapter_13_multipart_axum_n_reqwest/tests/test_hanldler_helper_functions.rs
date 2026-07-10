@@ -52,14 +52,13 @@ fn clean_test_folder(foldername: &str) {
 
 fn create_file(foldername: &str, filename: &str, file_content: &str) -> Result<String, std::io::Error> {
     let filepath = format!("{}/{}", foldername, filename);
-    fs::write(&filepath, file_content).unwrap();
+    fs::write(&filepath, file_content)?;
     Ok(filename.to_string())
 }
 
-fn delete_file(foldername: &str, filename: &str) -> Result<String, std::io::Error> {
-    let filepath = format!("{}/{}", foldername, filename);
-    fs::remove_file(filepath).unwrap();
-    Ok(filename.to_string())
+fn delete_file(filepath: &str) -> Result<(), std::io::Error> {
+    fs::remove_file(filepath)?;
+    Ok(())
 }
 
 enum MfcdTask {
@@ -71,21 +70,27 @@ fn multi_file_creater_and_deleter(foldername: &str, count: u16, prefix: &str, ex
     let mut all_files = Vec::new();
     for i in 0..count {
         let filename = format!("{}_{}.{}", prefix, i, extension);
+        let filepath = format!("{}/{}", foldername, filename);
         let demotext: &str = "Hello this is test text";
         let errormessage = "----------------------Error creating file: ";
         match task {
             MfcdTask::Add => {
-                if let Ok(file) = create_file(foldername, filename.as_str(), demotext) {
-                    all_files.push(file);
+                if let Err(e) = fs::write(&filepath, demotext) {
+                    dbg!(&filepath);
+                    eprintln!("{}:{}", errormessage, e);
                 } else {
-                    eprintln!("{}{}/{}.{}", errormessage, foldername, filename, extension);
+                    dbg!(&filename);
+                    all_files.push(filename);
                 }
+                // if let Ok(file) = create_file(foldername, filename.as_str(), demotext) { all_files.push(file); } else { eprintln!("{}{}/{}.{}", errormessage, foldername, filename, extension); } R: Orignal i wrote
             }
             MfcdTask::Remove => {
-                if let Ok(file) = delete_file(foldername, filename.as_str()) {
-                    all_files.push(file);
+                if let Err(e) = fs::remove_file(&filepath) {
+                    dbg!(&filepath);
+                    eprintln!("{}:{}", errormessage, e);
                 } else {
-                    eprintln!("{}{}/{}.{}", errormessage, foldername, filename, extension);
+                    dbg!(&filename);
+                    all_files.push(filename);
                 }
             }
         }
@@ -100,12 +105,14 @@ fn multi_file_creater_and_deleter(foldername: &str, count: u16, prefix: &str, ex
 fn test_single_file(filename: &str) {
     let folderpath = setup_test_folder();
     let filepath = create_file(&folderpath, filename, "# heading 1").unwrap();
+    dbg!(&filepath);
 
     let res = list_all_files_in_folder(&folderpath).unwrap();
+    dbg!(&res);
     assert_eq!(res.len(), 1);
     assert!(res.contains(&filename.to_string()));
 
-    fs::remove_file(filepath).unwrap();
+    delete_file(&filepath).unwrap();
     clean_test_folder(&folderpath);
     static_variable();
 }
@@ -117,6 +124,8 @@ fn test_multiple_files(count: u16, extension: &str) {
     let expected_files = multi_file_creater_and_deleter(&folderpath, count, "a", extension, MfcdTask::Add);
 
     let res = list_all_files_in_folder(&folderpath).unwrap();
+    dbg!(&res);
+
     assert_eq!(res.len(), expected_files.len());
     assert_eq!(res, expected_files); // check sorted order of files.
 
@@ -128,13 +137,17 @@ fn test_multiple_files(count: u16, extension: &str) {
 #[test_case(10)]
 fn test_hidden_files(count: u16) {
     let folderpath = setup_test_folder();
-    let mut all_files = multi_file_creater_and_deleter(&folderpath, count, "visible_files", "txt", MfcdTask::Add);
-    let mut hidden_files = multi_file_creater_and_deleter(&folderpath, count, ".hidden_files", "txt", MfcdTask::Add);
+    let visible_files = multi_file_creater_and_deleter(&folderpath, count, "visible_files", "txt", MfcdTask::Add);
+    let hidden_files = multi_file_creater_and_deleter(&folderpath, count, ".hidden_files", "txt", MfcdTask::Add);
 
-    all_files.append(&mut hidden_files); // move everyting from hidden files to all files
+    // cloning because we need both visible and hiddenfiles later.
+    let mut expected_files = visible_files.clone();
+    expected_files.extend(hidden_files.clone());
+    expected_files.sort();
 
     let res = list_all_files_in_folder(&folderpath).unwrap();
-    assert_eq!(res.len(), all_files.len());
+    dbg!(&res);
+    assert_eq!(res.len(), visible_files.len());
 
     multi_file_creater_and_deleter(&folderpath, count, "visible_files", "txt", MfcdTask::Remove);
     multi_file_creater_and_deleter(&folderpath, count, ".hidden_files", "txt", MfcdTask::Remove);
