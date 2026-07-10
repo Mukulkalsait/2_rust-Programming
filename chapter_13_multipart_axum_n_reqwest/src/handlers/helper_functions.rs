@@ -1,6 +1,5 @@
-use std::ffi::OsStr;
-
 use axum::Error;
+use std::ffi::OsStr;
 
 /// providing default upload directory into root/upload
 ///  => if present return , else create and return
@@ -150,45 +149,6 @@ pub fn list_all_files_in_folder(folder_path: &str) -> Result<Vec<String>, std::i
     }
 }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
