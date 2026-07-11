@@ -25,9 +25,7 @@ pub struct Dog {
 }
 // Ty2: -------------------------------------------------------------------------------------------------------------------
 
-fn default_gender() -> Gender {
-    Gender::Male
-}
+fn default_gender() -> Gender { Gender::Male }
 #[derive(serde::Serialize, serde::Deserialize, Debug)]
 pub struct DogOwner {
     pub name: String,
