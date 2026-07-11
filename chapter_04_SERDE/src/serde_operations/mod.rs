@@ -3,28 +3,23 @@ use crate::data_structs::*;
 /// we added data into owenr1, dog1 and did serilised_dog = serde_json::to_string(&struct_var)
 /// is_ok? if yes ok().unwrap();
 pub fn serilise_data() {
-    let owner1: DogOwner = DogOwner {
-        name: "mukul".to_string(),
-        age: 29,
-        gender: Gender::Male,
-        occupation: "Senior DevOps & System Engineer".to_string(),
-        generated_at: 2026,
-    };
-    let vaxin_list1: VaxinList = VaxinList { v1: Some(Vaxins::Booster), v2: Some(Vaxins::TT), v3: Some(Vaxins::Fungal) };
-    let status1: DogStatus = DogStatus { is_vaxcinated: true, which_vaxin: Some(vaxin_list1) };
+    let mukul: DogOwner =
+        DogOwner { name: "mukul".to_string(), age: 29, gender: Gender::Male, occupation: "Senior DevOps & System Engineer".to_string(), generated_at: 2026 };
+    let july_vaxin_list: Option<VaxinList> = Some(VaxinList { v1: Some(Vaxins::Booster), v2: Some(Vaxins::TT), v3: Some(Vaxins::Fungal) });
+    let july_status: DogStatus = DogStatus { is_vaxcinated: true, which_vaxin: july_vaxin_list };
 
-    let dog1: Dog = Dog {
+    let july: Dog = Dog {
         name: "Julie".to_string(),
         breed: "dobarman".to_string(),
         gender: Gender::Female,
         age: 2017,
-        owener: owner1,
+        owener: mukul,
         secret_code: "AXIE#@2423VC3424".to_string(),
-        status: status1,
+        status: july_status,
         previous_owners: 0,
     };
 
-    let dog_ser = serde_json::to_string_pretty(&dog1);
+    let dog_ser = serde_json::to_string_pretty(&july);
 
     if dog_ser.is_ok() {
         println!("{}", dog_ser.ok().unwrap());

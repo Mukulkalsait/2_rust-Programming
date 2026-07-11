@@ -38,3 +38,16 @@ fn test_with_runner() {
     });
     // Cleanup happens automatically!
 }
+
+// Y: Explanation:
+// unlike otehr parts where we seperate small things into Helper functions,
+// ---
+// thisis completelly different,
+// ---
+// we seperate here the main logic,
+// the FUNCTION with_test_folder()
+// runs the following steps
+//   * creation of env/ folders
+//   * running actuall test cases, by calling function anc comparisions
+//   * clearing the env/ folders.
+//

@@ -1,13 +1,14 @@
 use std::collections::HashMap;
 
-use crate::handlers::helper_functions::{get_upload_dir, save_file_on_default_upload_directory};
+use crate::handlers::helper_functions::*;
 use axum::{
     self,
     Json,
-    extract::{Multipart, Path, Query},
+    extract::{Path, Query},
     http::StatusCode,
-    response::{ErrorResponse, IntoResponse},
+    response::IntoResponse,
 };
+use serde::{Deserialize, Serialize};
 
 // Y: ============================================================================ Basic fn
 //
@@ -61,7 +62,7 @@ pub async fn test_dummy_file_saveing() {
 /// ```
 ///  ---
 pub async fn check_file_present_or_not(axum::extract::Path(filename): Path<String>) -> Result<Vec<u8>, axum::http::StatusCode> {
-    let complete_file_path = format!("{}/{}", get_upload_dir(), filename);
+    let complete_file_path = format!("{}/{}", get_upload_dir().await, filename);
     std::fs::read(complete_file_path).map_err(|_| StatusCode::NOT_FOUND)
 }
 
@@ -93,19 +94,27 @@ pub async fn post_save_file(mut multipart: axum::extract::Multipart) -> impl axu
     (StatusCode::OK, res.join("\n"))
 }
 
+/// this uses std::fs::<features>
+/// no async so IO will be blocked
+/// hene we use tokio::fs with async awit.
 pub async fn delete_file(axum::extract::Path(filename): Path<String>) -> Result<(), StatusCode> {
     // delete_file_on_default_upload_directory(&filename)
-    let complete_file_path = format!("{}/{}", get_upload_dir(), filename);
+    let dir = get_upload_dir().await;
+    let complete_file_path = format!("{}/{}", dir, filename);
 
-    std::fs::remove_file(complete_file_path).map_err(|e| match e.kind() {
-        std::io::ErrorKind::NotFound => StatusCode::NOT_FOUND,
-        std::io::ErrorKind::PermissionDenied => StatusCode::FORBIDDEN,
-        _ => StatusCode::INTERNAL_SERVER_ERROR,
+    std::fs::remove_file(complete_file_path).map_err(|e| {
+        // Tracing
+        // tracing::error("faild to delete {}:{}, filename , e")
+        match e.kind() {
+            std::io::ErrorKind::NotFound => StatusCode::NOT_FOUND,
+            std::io::ErrorKind::PermissionDenied => StatusCode::FORBIDDEN,
+            _ => StatusCode::INTERNAL_SERVER_ERROR,
+        }
     })
 }
 
 pub async fn delete_best_implimentation(axum::extract::Path(filename): Path<String>) -> Result<(), StatusCode> {
-    let path: std::path::PathBuf = [get_upload_dir(), filename].iter().collect();
+    let path: std::path::PathBuf = [get_upload_dir().await, filename].iter().collect();
 
     tokio::fs::remove_file(&path).await.map_err(|e| {
         // Y: Tracing
@@ -118,22 +127,66 @@ pub async fn delete_best_implimentation(axum::extract::Path(filename): Path<Stri
     })
 }
 
-struct FileInfo {
-    name: String,
-    size: u64,
-    modified: String,
-    path: String,
+#[derive(Debug, Serialize, Deserialize)]
+// STRUCT:
+pub struct FileInfo {
+    pub name: String,
+    pub size: u64,
+    pub path: String,
+    pub last_modified: String,
+    pub ext: Option<String>,
+    pub is_hidden: bool,
+    // Music-specific metadata
+    // title: String,
+    // artist: String,
+    // album: String,
+    // album_art: Vec<u8>,
+    // duration: u64, // seconds
+    // bitrate: u32,
+    // sample_rate: u32,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+// STRUCT:
 struct FileListResponse {
     files: Vec<FileInfo>,
     count: usize,
     total_size: u64,
 }
 
-pub async fn get_all_files_handler() {
+pub async fn get_all_files_handler() -> impl IntoResponse {
     // return impl IntoResponse
-    todo!();
+    let upload_dir = get_upload_dir().await.to_string();
+
+    let filenames = match list_all_files_in_folder(&upload_dir) {
+        Ok(files) => files,
+        Err(e) => {
+            eprintln!("Faild to read directory: {}", e);
+            return (StatusCode::INTERNAL_SERVER_ERROR, format!("Faild to read files: {}", e));
+        }
+    };
+
+    let mut entries = Vec::new();
+    let mut total_size = 0;
+
+    for filename in filenames {
+        match get_file_entry(upload_dir.as_str(), filename.as_str()) {
+            Ok(entry) => {
+                total_size += entry.size;
+                entries.push(entry);
+            }
+            Err(e) => {
+                eprintln!("Faild to get the entry {}: {}", filename, e);
+                continue;
+            }
+        }
+    }
+
+    entries.sort_by(|a, b| a.name.cmp(&b.name));
+    let file_count = entries.len();
+    let response = FileListResponse { files: entries, count: file_count, total_size };
+
+    (StatusCode::OK, Json(response))
 }
 
 //

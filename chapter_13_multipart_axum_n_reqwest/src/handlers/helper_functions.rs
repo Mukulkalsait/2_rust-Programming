@@ -1,11 +1,12 @@
+use crate::handlers::functions::*;
 use axum::Error;
-use std::ffi::OsStr;
+use std::{ffi::OsStr, fs};
 
 /// providing default upload directory into root/upload
 ///  => if present return , else create and return
-pub fn get_upload_dir() -> String {
+pub async fn get_upload_dir() -> String {
     if !std::path::Path::new("./uploads").exists() {
-        std::fs::create_dir_all("./uploads").unwrap()
+        tokio::fs::create_dir_all("./uploads").await.unwrap()
     }
     "./uploads".to_string()
 }
@@ -23,7 +24,7 @@ pub fn get_upload_dir() -> String {
 /// to_str() - Convert to string
 ///
 /// ```
-pub async fn save_file_on_default_upload_directory(bytes: Vec<u8>, orignal_filename: &str) -> Result<String, std::io::Error> {
+pub async fn save_file_on_default_upload_directory(bytes: Vec<u8>, orignal_filename: &str) -> Result<String, tokio::io::Error> {
     let path_obj = std::path::Path::new(orignal_filename);
     let extension_extration = path_obj.extension().and_then(|extension| extension.to_str()).unwrap_or("bin").to_string();
 
@@ -42,9 +43,9 @@ pub async fn save_file_on_default_upload_directory(bytes: Vec<u8>, orignal_filen
     // R: debuging
 
     let uploading_filename = format!("file_{}.{}", chrono::Utc::now().timestamp(), extension_extration); // return this to user...
-    let save_path = format!("{}/{}", get_upload_dir(), uploading_filename);
+    let save_path = format!("{}/{}", get_upload_dir().await, uploading_filename);
 
-    std::fs::write(&save_path, bytes)?;
+    tokio::fs::write(&save_path, bytes).await?;
     Ok(uploading_filename)
 }
 
@@ -60,20 +61,6 @@ pub struct FileResponse {
     count: usize,
 }
 
-/// >>> Awesome Concept found here
-///  1. when we do read_dir() it returns -> Result<ReadDir,Error>               G: 1
-///  2. match with Ok/Err return the same things just to get inner value        G: 2
-///  3. now we got inner value that is ReadDir which is an ITERATOR             G: 3
-///  4. now loop over and we get each_entry with type Result<DirEntry, Error>   G: 4
-///  5. Match and get inner value DirEntry                                      G: 5
-///  6. NOW DirEntry has its Methods like .path() and return -> PathBuf         G: 6
-///  7. NOW PathBof has iss methods like .file_name() -> OsString type name     G: 7
-///
-///
-/// ```
-/// // So basically we have:                                                    IMP:
-///   Result<ReadDir:Result<DirEntry.Impls, Error>, Error>
-/// ```
 pub fn list_folder_x(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
     let mut all_file_list = Vec::new();
 
@@ -117,7 +104,7 @@ pub fn list_folder_x(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
 }
 
 /// try to understand the list_folder_x() function its the same but extreamly optimised edmotic version.
-pub fn list_all_files_in_folder(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
+pub fn _list_all_files_in_folder_standard_lib(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
     let mut all_files_in_folder = Vec::new();
 
     match std::fs::read_dir(folder_path) {
@@ -149,6 +136,104 @@ pub fn list_all_files_in_folder(folder_path: &str) -> Result<Vec<String>, std::i
     }
 }
 
+// R: develop this one frist
+// pub async fn _list_all_files_in_folder(folder_path: &str) -> Result<Vec<String>, std::io::Error> {
+//     let mut all_files_in_folder = Vec::new();
+//     let mut directory = tokio::fs::read_dir(folder_path).await?;
+//
+//     while let Some(entry) = directory.next_entry().await?{}
+//
+//     match std::fs::read_dir(folder_path) {
+//         Ok(directory) => {
+//             for each_files in directory {
+//                 match each_files {
+//                     Ok(inner_file) => {
+//                         let file_path = inner_file.path(); // need filename from PathBuf
+//                         if let Some(file_name) = file_path.file_name().and_then(|n| n.to_str()) {
+//                             all_files_in_folder.push(file_name.to_string());
+//                         }
+//                     }
+//                     Err(e) => {
+//                         eprintln!("Faild to read file: {}", e);
+//                         continue;
+//                     }
+//                 }
+//             }
+//             all_files_in_folder.sort();
+//             Ok(all_files_in_folder)
+//         }
+//         Err(e) => match e.kind() {
+//             std::io::ErrorKind::NotFound => {
+//                 // if directory not found empty vec return
+//                 Ok(Vec::new())
+//             }
+//             _ => Err(e),
+//         },
+//     }
+// }
+
+pub fn get_file_entry(folder_path: &str, filename: &str) -> Result<FileInfo, std::io::Error> {
+    let full_path = format!("{}/{}", folder_path, filename);
+
+    let name = filename.to_string();
+    let is_hidden = name.starts_with('.');
+
+    let path = std::path::Path::new(&full_path); // crate a path type
+    let ext = path.extension().and_then(|e| e.to_str()).map(|s| s.to_string());
+
+    let metatada = fs::metadata(&full_path).unwrap(); // get filemetadata
+    let size = metatada.len();
+    let last_modified =
+        metatada.modified().ok().and_then(|t| t.elapsed().ok()).map(|d| format!("{} Seconds ago", d.as_secs())).unwrap_or("Unknown".to_string());
+
+    Ok(FileInfo { name, size, path: full_path, last_modified, ext, is_hidden })
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
