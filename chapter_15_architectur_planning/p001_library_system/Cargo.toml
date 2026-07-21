@@ -1,0 +1,8 @@
+[package]
+name = "p001_library_system"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chrono = "0.4.45"
+uuid = { version = "1.24.0", features = ["v4"] }
