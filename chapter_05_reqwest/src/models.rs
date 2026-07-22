@@ -1,6 +1,11 @@
 use serde::{Deserialize, Serialize};
 
-// Y: REQUESTS --------------------------------------------------------------------------------------------------------------------
+// IMP:  ===================================== REQWEST ====================
+// |        WE ARE REQUEST SEMDER HERE NOT RECIEVER...
+// |        WE CREATE CLIENT HERE NOT SERVER.
+// IMP:  ===================================== END ========================
+
+// G: REQUESTS ------------------------------------------------------------
 // here we sent request.
 // THEREFORE:
 //  1. data from struct => json [SERIALIZATION]
@@ -20,7 +25,7 @@ pub struct SearchQuery {
     pub page: u16,
 }
 
-// R: RESPONSES -------------------------------------------------------------------------------------------------------------------
+// R: RESPONSES -----------------------------------------------------------
 // here we reciece the data.
 //  THEREFORE:
 //  1. json => Struct [DESERALIZATION1]
