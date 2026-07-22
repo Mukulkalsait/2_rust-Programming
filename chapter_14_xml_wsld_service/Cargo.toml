@@ -1,0 +1,10 @@
+[package]
+name = "chapter_14_xml_wsld_service"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.52", features = ["full"] }
+axum = "0.8"
+bytes = "1.12"
+# soap-server = "0.1" # Integrates the WSDL router pipeline
