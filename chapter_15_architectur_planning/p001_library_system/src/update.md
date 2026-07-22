@@ -57,8 +57,6 @@ pub fn get_record_ref(&self, recordid: Option<RecordID>, boo_id: Option<BookId>)
             found: Some("Both provided".to_string()),
         }),
         (None, None) => Err(LibErrors::InvalidResponse {
-            messgage: "Please provide EITHER RecordID OR BookId".to_string(),
-            expected: Some("RecordID OR BookId".to_string()),
             found: Some("None provided".to_string()),
         }),
     }
