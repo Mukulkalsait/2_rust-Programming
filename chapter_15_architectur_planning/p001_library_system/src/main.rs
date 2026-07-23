@@ -1,10 +1,5 @@
 // main.rs
-
-mod book;
-mod errors;
-mod library;
-mod member;
-mod record;
+use p001_library_system;
 
 fn main() {
     println!("Hello, world!");

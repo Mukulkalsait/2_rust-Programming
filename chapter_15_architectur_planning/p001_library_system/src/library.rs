@@ -41,7 +41,7 @@ struct BorrowingDetails {
     pub member_name: String,
     pub borrowed_at: DateTime<Utc>,
     pub due_date: DateTime<Utc>,
-    pub return_at: DateTime<Utc>,
+    pub return_at: Option<DateTime<Utc>>,
 }
 
 impl Library {
@@ -92,10 +92,25 @@ impl Library {
         Ok(())
     }
 
-    pub fn update_membership_statu(&mut self, memberid: MemberId, membership_status: Membership) -> Result<()> {
+    pub fn update_membership_status(&mut self, memberid: MemberId, membership_status: Membership) -> Result<()> {
         let member = self.members.iter_mut().find(|m| m.member_id == memberid).ok_or(LibErrors::NotFound)?;
         member.membership = membership_status;
         Ok(())
+    }
+    fn get_borrowing_details(&self, recordid: RecordID) -> Result<BorrowingDetails> {
+        let record = self.records.iter().find(|r| r.record_id == recordid).ok_or(LibErrors::NotFound)?;
+        let book = self.books.iter().find(|b| b.book_id == record.boo_id).ok_or(LibErrors::NotFound)?;
+        let member = self.members.iter().find(|m| m.member_id == record.mem_id).ok_or(LibErrors::NotFound)?;
+        Ok(BorrowingDetails {
+            record_id: record.record_id,
+            book_id: book.book_id,
+            member_id: member.member_id,
+            book_title: book.title.clone(),
+            member_name: member.name.clone(),
+            borrowed_at: record.borrowed_at,
+            return_at: Some(record.return_at.unwrap()),
+            due_date: record.due_date,
+        })
     }
 
     fn borrow_book(&mut self, bookid: BookId, memberid: MemberId) -> errors::Result<BorrowingRecord> {
@@ -110,7 +125,7 @@ impl Library {
             _ => Err(errors::LibErrors::NotFound),
         }
     }
-    fn return_book(&mut self, memberid: Option<MemberId>, recordid: RecordID) -> errors::Result<&mut BorrowingRecord> {
+    fn return_book(&mut self, memberid: Option<MemberId>, recordid: RecordID) -> errors::Result<()> {
         let record = self.get_record(recordid)?;
         let book_id = record.boo_id;
         record.return_at = Some(chrono::Utc::now());
@@ -118,6 +133,6 @@ impl Library {
         let book = self.get_book(book_id)?;
         book.status = BookStatus::Avialable;
 
-        Ok(record)
+        Ok(())
     }
 }
