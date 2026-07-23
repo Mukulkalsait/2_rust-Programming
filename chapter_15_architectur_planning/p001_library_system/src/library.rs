@@ -1,20 +1,18 @@
 // library.rs
 
-use core::fmt;
-use std::fmt::write;
-
 use chrono::DateTime;
 use chrono::Utc;
 
 use crate::book::*;
 use crate::errors;
 use crate::errors::*;
+use crate::library;
+use crate::member;
 use crate::member::*;
-use crate::record;
 use crate::record::*;
 
 #[derive(Debug, Clone)]
-struct Library {
+pub struct Library {
     pub books: Vec<Book>,
     pub members: Vec<Member>,
     pub records: Vec<BorrowingRecord>,
@@ -45,6 +43,15 @@ struct BorrowingDetails {
 }
 
 impl Library {
+    pub fn new_empty() -> Self { Self { books: Vec::new(), members: Vec::new(), records: Vec::new() } }
+
+    pub fn new(book: Book, member: Member) -> Self {
+        let mut lib = Library::new_empty();
+        lib.books.push(book);
+        lib.members.push(member);
+        lib
+    }
+
     pub fn get_record_ref(&self, recordid: Option<RecordID>, boo_id: Option<BookId>) -> errors::Result<&BorrowingRecord> {
         match (recordid, boo_id) {
             (Some(rid), None) => self.records.iter().find(|r| r.record_id == rid).ok_or(LibErrors::NotFound),
@@ -97,7 +104,7 @@ impl Library {
         member.membership = membership_status;
         Ok(())
     }
-    fn get_borrowing_details(&self, recordid: RecordID) -> Result<BorrowingDetails> {
+    pub fn get_borrowing_details(&self, recordid: RecordID) -> Result<BorrowingDetails> {
         let record = self.records.iter().find(|r| r.record_id == recordid).ok_or(LibErrors::NotFound)?;
         let book = self.books.iter().find(|b| b.book_id == record.boo_id).ok_or(LibErrors::NotFound)?;
         let member = self.members.iter().find(|m| m.member_id == record.mem_id).ok_or(LibErrors::NotFound)?;
@@ -113,7 +120,7 @@ impl Library {
         })
     }
 
-    fn borrow_book(&mut self, bookid: BookId, memberid: MemberId) -> errors::Result<BorrowingRecord> {
+    pub fn borrow_book(&mut self, bookid: BookId, memberid: MemberId) -> errors::Result<BorrowingRecord> {
         let book = &mut self.get_book(bookid)?;
 
         match book.status {
@@ -125,7 +132,7 @@ impl Library {
             _ => Err(errors::LibErrors::NotFound),
         }
     }
-    fn return_book(&mut self, memberid: Option<MemberId>, recordid: RecordID) -> errors::Result<()> {
+    pub fn return_book(&mut self, memberid: Option<MemberId>, recordid: RecordID) -> errors::Result<()> {
         let record = self.get_record(recordid)?;
         let book_id = record.boo_id;
         record.return_at = Some(chrono::Utc::now());
