@@ -20,3 +20,9 @@ pub struct Member {
     pub membership: Membership,
     pub joined_at: chrono::DateTime<Utc>,
 }
+
+impl Member {
+    pub fn new(name: String, email: String, membership: Membership) -> Member {
+        Member { member_id: Uuid::new_v4(), name, email, membership, joined_at: Utc::now() }
+    }
+}
