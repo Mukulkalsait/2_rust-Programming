@@ -23,3 +23,7 @@ pub struct Book {
     pub isbn: String,
     pub status: BookStatus,
 }
+
+impl Book {
+    pub fn new(title: String, author: String, isbn: String, status: BookStatus) -> Book { Book { book_id: Uuid::new_v4(), title, author, isbn, status } }
+}
