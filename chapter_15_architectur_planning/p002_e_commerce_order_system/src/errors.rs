@@ -1,10 +1,6 @@
-use std::fmt::write;
-
-use serde::de::Error;
-
 use crate::{
     order_n_cart::OrderID,
-    product::{ProductID, ProductVarient},
+    product::{ProductID, VarientID},
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -14,8 +10,8 @@ pub enum ProductErrors {
     InsufficientStock { mess: String },
     OutOfStock { mess: String, id: Option<ProductID> },
     Discoutinued { mess: String, id: Option<ProductID> },
-    VarientNotFound { mess: String, id: Option<ProductID>, var: Option<ProductVarient> },
-    VarientAlreadyExists { mess: String, id: Option<ProductID>, var: Option<ProductVarient> },
+    VarientNotFound { mess: String, id: Option<ProductID>, var: Option<VarientID> },
+    VarientAlreadyExists { mess: String, id: Option<ProductID>, var: Option<VarientID> },
     InvalidPrice { mess: String, order_id: Option<OrderID> },
     InvalidQuantity { mess: String, order_id: Option<OrderID> },
     ProductNotAvailable { mess: String, product: Option<ProductID> },
@@ -95,4 +91,26 @@ impl std::fmt::Display for ProductErrors {
 }
 
 impl std::error::Error for ProductErrors {}
-pub type Result<T> = std::result::Result<T, ProductErrors>;
+pub type ProductErrRes<T> = std::result::Result<T, ProductErrors>;
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+/// Enum: Product Specific Errors.
+pub enum GeneralErrors {
+    FaildToUpdate,
+    InvalidRequest { mess: String },
+    InsufficientData { mess: String },
+    OutOfScope { mess: String },
+}
+
+impl std::fmt::Display for GeneralErrors {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            GeneralErrors::FaildToUpdate => write!(f, "Request Faild Unexpectedly"),
+            GeneralErrors::InvalidRequest { mess } => write!(f, "Invalid Request: {}", mess),
+            GeneralErrors::InsufficientData { mess } => write!(f, "Insufficient Data : {}", mess),
+            GeneralErrors::OutOfScope { mess } => write!(f, "Out of scope: {}", mess),
+        }
+    }
+}
+impl std::error::Error for GeneralErrors {}
+pub type GeneralErrRes<T> = std::result::Result<T, GeneralErrors>;
