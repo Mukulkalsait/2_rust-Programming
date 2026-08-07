@@ -5,7 +5,8 @@
 ---
 
 ### 2. Education/Job Background
-> * gelya 2 varshapasun IT shetrat kaam karat ahe. Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe. Yaadhhi RG-VP Web Solutions madhye Systems Engineer mhanun kaam kele.
+> * shikshan ani vyasays mhantla tr 
+  * Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe ani gelya 3 varshapasun IT shetrat kaam karat ahe. 
 > * Mazha kaam mhanje company chya server aani systems cha MANAGEMENT, tya suralit chaltil yachi kaaij ghene, Efficiency, speed impvomenent , cost management, update, debug karna, 
 30+ websites aani applications mee setap aani manage kelya ahet. ani latest and fastest technologies sobat setuup karne he mazi speicallity ahe 
 
