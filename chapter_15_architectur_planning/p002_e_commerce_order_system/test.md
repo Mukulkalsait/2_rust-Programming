@@ -6,18 +6,18 @@
 
 ### 2. Education/Job Background
   * shikshan ani vyasays mhantla tr 
-  * Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe ani gelya 3 varshapasun IT shetrat kaam karat ahe. 
+  * Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe 
+  * ani gelya 3 varshapasun IT shetrat ahe. 
   * Mazha kaam mhanje company chya server aani systems cha MANAGEMENT, tyanchi , Efficiency wadhavna, speed impvomenent , cost management, update, debug karna, 
   * nagpur mothe colleges kits college, IIIt Nagpur, anjuman college ani nagpur university chya project.
   * sadhya 30+ websites aani applications ____________________kelya ahet. 
   <!-- * sadhy chya jagat latest and fastest technologies sobat setup karne he mazi speicallity ahe  -->
 
-
 ---
 
 ### 3. Samajkarya Anubhav
 > *"Samaajkaaryacha anubhav sangaycha tar,
-- aattaparyant mee samaajaat pad-adhikari mhanun kaam kelela nahi. 
+- aattaparyant mee samaajaat kuthlya pada wr kaam kelela nahi. 
 - Pan
 - mee nehmi lohaar samaajachya karyakramanna upasthit rahilo ahe.
 - Nuktich mala he Sandhi milali,
@@ -26,7 +26,7 @@
 
 ---
 
-### 4. Situation of Students in My City/District
+### 4. nagpur vidhyarthi youva parasthitihi  
  - Nagpur jilhyat lohaar samaajache
  - vidyarthi changlya sankhyenet ahet. 
  - Pan tyanchya samor ek mothi adchan ahe - **Sanghatnecha abhaav**.
