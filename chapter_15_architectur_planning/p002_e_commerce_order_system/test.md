@@ -32,33 +32,33 @@
  - Pan tyanchya samor ek mothi adchan ahe - **Sanghatnecha abhaav**.
 
  - Sanghatna ahe, pan
-  - **tarunaicha sahabhaag nahiye**. 
-  Aajchi yuva pidhi junya pidhichya paddhatini kaam karayla tayar nahi. Tyanna navin disha, navin drushtikon hava ahe. Pan tyanna yogya margdarshan aani sandhi milat nahi.
->
-> Mazha sampurn laksh ha mudda sodavnyavar asel - **tarunanna sanghatneshi jodn aani tyanna sahabhaagi karun ghen.**"*
+ - tarun  sah- bhaag nahiye**.
+ - sadhy chi generation he lohar samajaa prati purna pashi serious nahi mhantla tari chalel.
+ - Tyanna navin disha,
+ - ani samajala ekatra annya chi bhavna nirmal karne.
 
 ---
 
-### 5. My Next 90 Days Goal
-> *"Pudhil 90 divsant mazhi uddishta spasht ahet:
-> 1. Nagpur jilhyatil pratyek talukyat kimi ek tarun lohaar sampark vyakti (Nodal) nemne.
-> 2. ani jilhaltil jastit jast youth students paryant pochun tyancha paryant ya sansthe baddl mahiti pochavna, ani sansthe shi jodun ghena ha rahil."*
-
----
-
-### 6. My Contribution to the Parishad (Yogdan)
-> *"Ya parishadela mazha mukhya yogdan **tantradnyanachya madhyamatun** asel:
->
-> Mee IT kshetrat aslyane, 
-technology cha  samaja sathi  kasa karta yeil, yababat mee mazha margdarshan aani salla deu shakto.
-maza asa mat ahe, 
-ajj chya digital yougat,
-technology cha purepur faida jr ghetla tr bharpur kame lavkar ani sopi paddhiti ne karta yel. :
-
->  pudhe jaun Vidyarthi database tayar karne,
-> - Social media platform var aaplya parishadichi upasthiti vadhvne
->
-> Tasanch,  Digital yugat samaaj sanghatna kashi adhik prabhavi pane kaam karu shakte, yacha niyojan aani amalbajavani karnyat mee madat karu shakto."*
-
----
+<!-- ### 5. My Next 90 Days Goal -->
+<!-- > *"Pudhil 90 divsant mazhi uddishta spasht ahet: -->
+<!-- > 1. Nagpur jilhyatil pratyek talukyat kimi ek tarun lohaar sampark vyakti (Nodal) nemne. -->
+<!-- > 2. ani jilhaltil jastit jast youth students paryant pochun tyancha paryant ya sansthe baddl mahiti pochavna, ani sansthe shi jodun ghena ha rahil."* -->
+<!---->
+<!-- --- -->
+<!---->
+<!-- ### 6. My Contribution to the Parishad (Yogdan) -->
+<!-- > *"Ya parishadela mazha mukhya yogdan **tantradnyanachya madhyamatun** asel: -->
+<!-- > -->
+<!-- > Mee IT kshetrat aslyane,  -->
+<!-- technology cha  samaja sathi  kasa karta yeil, yababat mee mazha margdarshan aani salla deu shakto. -->
+<!-- maza asa mat ahe,  -->
+<!-- ajj chya digital yougat, -->
+<!-- technology cha purepur faida jr ghetla tr bharpur kame lavkar ani sopi paddhiti ne karta yel. : -->
+<!---->
+<!-- >  pudhe jaun Vidyarthi database tayar karne, -->
+<!-- > - Social media platform var aaplya parishadichi upasthiti vadhvne -->
+<!-- > -->
+<!-- > Tasanch,  Digital yugat samaaj sanghatna kashi adhik prabhavi pane kaam karu shakte, yacha niyojan aani amalbajavani karnyat mee madat karu shakto."* -->
+<!---->
+<!-- --- -->
 
