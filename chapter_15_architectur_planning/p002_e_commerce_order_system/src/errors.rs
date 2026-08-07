@@ -6,13 +6,14 @@ use crate::{
 #[derive(Debug, Clone, PartialEq, Eq)]
 /// Enum: Product Specific Errors.
 pub enum ProductErrors {
+    UnAvailalbe,
     NotFound,
-    InsufficientStock { mess: String },
+    InsufficientStock { requested: i32, avialable: u32 },
     OutOfStock { mess: String, id: Option<ProductID> },
     Discoutinued { mess: String, id: Option<ProductID> },
     VarientNotFound { mess: String, id: Option<ProductID>, var: Option<VarientID> },
     VarientAlreadyExists { mess: String, id: Option<ProductID>, var: Option<VarientID> },
-    InvalidPrice { mess: String, order_id: Option<OrderID> },
+    InvalidPrice { mess: String, price: i32 },
     InvalidQuantity { mess: String, order_id: Option<OrderID> },
     ProductNotAvailable { mess: String, product: Option<ProductID> },
 }
@@ -20,8 +21,11 @@ pub enum ProductErrors {
 impl std::fmt::Display for ProductErrors {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
+            ProductErrors::UnAvailalbe => write!(f, "UnAvailalbe"),
             ProductErrors::NotFound => write!(f, "Not Found"),
-            ProductErrors::InsufficientStock { mess } => write!(f, "InsufficientStock: {}", mess),
+            ProductErrors::InsufficientStock { requested, avialable } => {
+                write!(f, "Not Enough Stock avialable. Requirement:{}, Avialable:{}", requested, avialable)
+            }
             ProductErrors::OutOfStock { mess, id } => {
                 if !id.is_none() {
                     write!(f, "product {} out of Stock: {}", id.unwrap(), mess)
@@ -63,12 +67,8 @@ impl std::fmt::Display for ProductErrors {
                 }
             }
 
-            ProductErrors::InvalidPrice { mess, order_id } => {
-                if !order_id.is_none() {
-                    write!(f, "order: {}, has invalid price: {}", order_id.unwrap(), mess)
-                } else {
-                    write!(f, "has invalid price: {}", mess)
-                }
+            ProductErrors::InvalidPrice { mess, price } => {
+                write!(f, "order: {}, has invalid price: {}", mess, price)
             }
 
             ProductErrors::InvalidQuantity { mess, order_id } => {
