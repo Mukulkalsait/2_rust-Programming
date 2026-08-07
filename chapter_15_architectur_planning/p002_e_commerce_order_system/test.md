@@ -1,72 +1,55 @@
-Got it. Here's your revised script with all your changes:
-
----
-
-## Your Final 2-Minute Introduction Script
-
----
 
 ### 1. Name and City
-> *"मी [तुमचं नाव], नागपूर जिल्हा प्रभारी. मूळचा नागपूरचा. सध्या नागपूर इथेच राहतो आणि काम करतो."*
+> *"Mee Mukul kalsait , Nagpur Jilha Prabhari. Moolcha Nagpur cha. Sadhya Nagpur ithech rahto aani kaam karto."*
 
 ---
 
 ### 2. Education/Job Background
+> * gelya 2 varshapasun IT shetrat kaam karat ahe. Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe. Yaadhhi RG-VP Web Solutions madhye Systems Engineer mhanun kaam kele.
+> * Mazha kaam mhanje company chya server aani systems cha MANAGEMENT, tya suralit chaltil yachi kaaij ghene, Efficiency, speed impvomenent , cost management, update, debug karna, 
+30+ websites aani applications mee setap aani manage kelya ahet. ani latest and fastest technologies sobat setuup karne he mazi speicallity ahe 
 
-*"शिक्षण आणि व्यावसायिक पार्श्वभूमी सांगायची तर, मी गेल्या २ वर्षांपासून IT क्षेत्रात काम करत आहे. सध्या मी Vihaan Ai Technologies येथे Systems Engineer म्हणून कार्यरत आहे. याआधी RG-VP Web Solutions मध्ये Systems Engineer म्हणून काम केलं.
-
-*माझं काम म्हणजे कंपनीच्या सर्व्हर आणि सिस्टम्सची देखभाल करणे, त्या सुरळीत चालतील याची काळजी घेणे, आणि त्यांची कामगिरी सुधारणे. १०+ वेबसाइट्स आणि ॲप्लिकेशन्स मी सेटअप आणि मॅनेज केली आहेत.
-
-माझं मुख्य कौशल्य म्हणजे तंत्रज्ञानाच्या मदतीने काम अधिक व्यवस्थित, जलद आणि सुरक्षित कसं करता येईल हे समजणं आणि ते प्रत्यक्षात आणणं. हेच कौशल्य मी समाजासाठीही वापरू शकतो."
 
 ---
 
 ### 3. Samajkarya Anubhav
-> *"समाजकार्याचा अनुभव सांगायचा तर, आत्तापर्यंत मी समाजात पदाधिकारी म्हणून काम केलेलं नाही. पण मी नेहमीच लोहार समाजाच्या कार्यक्रमांना उपस्थित राहिलो आहे. नुकतीच मला या पदाची संधी मिळाली, आणि मी ही जबाबदारी पूर्ण ताकदीने पार पाडण्यास तयार आहे. माझा हा पहिला मोठा संधी आहे, आणि मी हे काम गांभीर्याने करेन."*
+> *"Samaajkaaryacha anubhav sangaycha tar, aattaparyant mee samaajaat pad-adhikari mhanun kaam kelela nahi. 
+Pan
+mee nehmi lohaar samaajachya karyakramanna upasthit rahilo ahe.
+Nuktich mala ya padachi Sandhi milali,
+aani mee te,  paar padnyas  purna prayatna karnar ahe
 
 ---
 
 ### 4. Situation of Students in My City/District
-> *"नागपूर जिल्ह्यात लोहार समाजाचे विद्यार्थी चांगल्या संख्येने आहेत. पण त्यांच्यासमोर एक मोठी अडचण आहे - **संघटनेचा अभाव**. 
+> *"Nagpur jilhyat lohaar samaajache vidyarthi changlya sankhyenet ahet. Pan tyanchya samor ek mothi adchan ahe - **Sanghatnecha abhaav**.
 >
-> संघटना आहे, पण **तरुणाईचा सहभाग नाहीये**. आजची युवा पिढी जुन्या पिढीच्या पद्धतींनी काम करायला तयार नाही. त्यांना नवीन दिशा, नवीन दृष्टीकोन हवा आहे. पण त्यांना योग्य मार्गदर्शन आणि संधी मिळत नाही. 
+> Sanghatna ahe, pan **tarunaicha sahabhaag nahiye**. Aajchi yuva pidhi junya pidhichya paddhatini kaam karayla tayar nahi. Tyanna navin disha, navin drushtikon hava ahe. Pan tyanna yogya margdarshan aani sandhi milat nahi.
 >
-> माझं संपूर्ण लक्ष हा मुद्दा सोडवण्यावर असेल - **तरुणांना संघटनेशी जोडणं आणि त्यांना सहभागी करून घेणं.**"*
+> Mazha sampurn laksh ha mudda sodavnyavar asel - **tarunanna sanghatneshi jodn aani tyanna sahabhaagi karun ghen.**"*
 
 ---
 
 ### 5. My Next 90 Days Goal
-> *"पुढील 90 दिवसांत माझी उद्दिष्टं स्पष्ट आहेत:*
-> 1. *नागपूर जिल्ह्यातील प्रत्येक तालुक्यात किमान एक तरुण लोहार संपर्क व्यक्ती (नोडल) नेमणे.*
-> 2. *जिल्ह्यातील सर्व लोहार विद्यार्थी आणि तरुणांचा डिजिटल डेटाबेस तयार करणे.*
-> 3. *किमान ५ तालुक्यांमध्ये तरुणांच्या भेटीचे (मीटिंग) आयोजन करणे, जेणेकरून त्यांच्या समस्या समजून घेता येतील आणि त्यांना संघटनेशी जोडता येईल.*
-> 4. *विद्यार्थी आणि तरुणांसाठी एक व्हॉट्सॲप/टेलिग्राम गट तयार करणे, जेणेकरून त्यांना सतत माहिती आणि मार्गदर्शन मिळत राहील.*"
+> *"Pudhil 90 divsant mazhi uddishta spasht ahet:
+> 1. Nagpur jilhyatil pratyek talukyat kimi ek tarun lohaar sampark vyakti (Nodal) nemne.
+> 2. ani jilhaltil jastit jast youth students paryant pochun tyancha paryant ya sansthe baddl mahiti pochavna, ani sansthe shi jodun ghena ha rahil."*
 
 ---
 
 ### 6. My Contribution to the Parishad (Yogdan)
-> *"या परिषदेला माझं मुख्य योगदान **तंत्रज्ञानाच्या माध्यमातून** असेल:*
+> *"Ya parishadela mazha mukhya yogdan **tantradnyanachya madhyamatun** asel:
 >
-> *मी IT क्षेत्रात असल्याने, मी संपूर्ण राज्यातील जिल्हा प्रभारींसाठी डिजिटल सिस्टम तयार करू शकतो. जसे की:*
-> - *विद्यार्थी डेटाबेस*
-> - *ऑनलाइन शिबिरांचं आयोजन*
-> - *सोशल मीडिया प्लॅटफॉर्मवर आपल्या परिषदेची उपस्थिती वाढवणं*
+> Mee IT kshetrat aslyane, 
+technology cha  samaja sathi  kasa karta yeil, yababat mee mazha margdarshan aani salla deu shakto.
+maza asa mat ahe, 
+ajj chya digital yougat,
+technology cha purepur faida jr ghetla tr bharpur kame lavkar ani sopi paddhiti ne karta yel. :
+
+>  pudhe jaun Vidyarthi database tayar karne,
+> - Social media platform var aaplya parishadichi upasthiti vadhvne
 >
-> *तसंच, तंत्रज्ञानाचा वापर समाजासाठी कसा करता येईल, याबाबत मी माझं मार्गदर्शन आणि सल्ला देऊ शकतो. डिजिटल युगात समाज संघटना कशी अधिक प्रभावीपणे काम करू शकते, याचं नियोजन आणि अंमलबजावणी करण्यात मी मदत करू शकतो."*
+> Tasanch,  Digital yugat samaaj sanghatna kashi adhik prabhavi pane kaam karu shakte, yacha niyojan aani amalbajavani karnyat mee madat karu shakto."*
 
 ---
 
-## Quick Summary Card
-
-| Topic | Key Points |
-|-------|------------|
-| **Name/City** | [Your name], Nagpur |
-| **Education/Job** | Linux Systems & Cloud Engineer - Vihaan Ai Technologies (2+ years experience) |
-| **Samajkarya Anubhav** | First official role, passionate, committed |
-| **Students' Situation** | संघटना आहे पण तरुणांचा सहभाग नाही - यावर focus |
-| **90 Days Goal** | Nodal persons, database, 5 taluka meetings, WhatsApp group |
-| **Yogdan** | Digital systems, database, online events, social media, tech guidance only (no financial) |
-
----
-
-This is clean, focused, and honest about what you can actually do. No overpromising. Just your real skills and a clear plan.
