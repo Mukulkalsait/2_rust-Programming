@@ -4,7 +4,7 @@
 
 ---
 
-### 2. Education/Job Background
+### 2. 
   * shikshan ani vyasays mhantla tr 
   * Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe 
   * ani gelya 3 varshapasun IT shetrat ahe. 
@@ -15,7 +15,7 @@
 
 ---
 
-### 3. Samajkarya Anubhav
+### 3.
 > *"Samaajkaaryacha anubhav sangaycha tar,
 - aattaparyant mee samaajaat kuthlya pada wr kaam kelela nahi. 
 - Pan
