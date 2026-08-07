@@ -16,18 +16,24 @@
 ---
 
 ### 3. Samajkarya Anubhav
-> *"Samaajkaaryacha anubhav sangaycha tar, aattaparyant mee samaajaat pad-adhikari mhanun kaam kelela nahi. 
-Pan
-mee nehmi lohaar samaajachya karyakramanna upasthit rahilo ahe.
-Nuktich mala ya padachi Sandhi milali,
-aani mee te,  paar padnyas  purna prayatna karnar ahe
+> *"Samaajkaaryacha anubhav sangaycha tar,
+- aattaparyant mee samaajaat pad-adhikari mhanun kaam kelela nahi. 
+- Pan
+- mee nehmi lohaar samaajachya karyakramanna upasthit rahilo ahe.
+- Nuktich mala he Sandhi milali,
+- aani mee te,  
+- paar padnyas  purna prayatna karil.
 
 ---
 
 ### 4. Situation of Students in My City/District
-> *"Nagpur jilhyat lohaar samaajache vidyarthi changlya sankhyenet ahet. Pan tyanchya samor ek mothi adchan ahe - **Sanghatnecha abhaav**.
->
-> Sanghatna ahe, pan **tarunaicha sahabhaag nahiye**. Aajchi yuva pidhi junya pidhichya paddhatini kaam karayla tayar nahi. Tyanna navin disha, navin drushtikon hava ahe. Pan tyanna yogya margdarshan aani sandhi milat nahi.
+ - Nagpur jilhyat lohaar samaajache
+ - vidyarthi changlya sankhyenet ahet. 
+ - Pan tyanchya samor ek mothi adchan ahe - **Sanghatnecha abhaav**.
+
+ - Sanghatna ahe, pan
+  - **tarunaicha sahabhaag nahiye**. 
+  Aajchi yuva pidhi junya pidhichya paddhatini kaam karayla tayar nahi. Tyanna navin disha, navin drushtikon hava ahe. Pan tyanna yogya margdarshan aani sandhi milat nahi.
 >
 > Mazha sampurn laksh ha mudda sodavnyavar asel - **tarunanna sanghatneshi jodn aani tyanna sahabhaagi karun ghen.**"*
 
