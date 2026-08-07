@@ -5,10 +5,12 @@
 ---
 
 ### 2. Education/Job Background
-> * shikshan ani vyasays mhantla tr 
+  * shikshan ani vyasays mhantla tr 
   * Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe ani gelya 3 varshapasun IT shetrat kaam karat ahe. 
-> * Mazha kaam mhanje company chya server aani systems cha MANAGEMENT, tya suralit chaltil yachi kaaij ghene, Efficiency, speed impvomenent , cost management, update, debug karna, 
-30+ websites aani applications mee setap aani manage kelya ahet. ani latest and fastest technologies sobat setuup karne he mazi speicallity ahe 
+  * Mazha kaam mhanje company chya server aani systems cha MANAGEMENT, tyanchi , Efficiency wadhavna, speed impvomenent , cost management, update, debug karna, 
+  * nagpur mothe colleges kits college, IIIt Nagpur, anjuman college ani nagpur university chya project.
+  * sadhya 30+ websites aani applications ____________________kelya ahet. 
+  <!-- * sadhy chya jagat latest and fastest technologies sobat setup karne he mazi speicallity ahe  -->
 
 
 ---
