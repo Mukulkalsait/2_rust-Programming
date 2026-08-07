@@ -8,9 +8,9 @@
   * shikshan ani vyasays mhantla tr 
   * Sadhya mee Vihaan Ai Technologies yethe Systems Engineer mhanun karyarat ahe 
   * ani gelya 3 varshapasun IT shetrat ahe. 
-  * Mazha kaam mhanje company chya server aani systems cha MANAGEMENT, tyanchi , Efficiency wadhavna, speed impvomenent , cost management, update, debug karna, 
+  * Mazha kaam mhanje company chya SERVER aani SYSTEMS cha MANAGEMENT, tyanchi , Efficiency wadhavna, speed impvomenent , cost management, update, debug karna, 
   * nagpur mothe colleges kits college, IIIt Nagpur, anjuman college ani nagpur university chya project.
-  * sadhya 30+ websites aani applications ____________________kelya ahet. 
+  * sadhya 30 peksha jast websites aani applications ____________________kelya ahet. 
   <!-- * sadhy chya jagat latest and fastest technologies sobat setup karne he mazi speicallity ahe  -->
 
 ---
@@ -26,10 +26,12 @@
 
 ---
 
-### 4. nagpur vidhyarthi youva parasthitihi  
- - Nagpur jilhyat lohaar samaajache
- - vidyarthi changlya sankhyenet ahet. 
- - Pan tyanchya samor ek mothi adchan ahe - **Sanghatnecha abhaav**.
+### 4. nagpur lohar samaj youva   
+ - jilhyat mothya pramanat youva ahe,
+ - vishvakarma jayanti chya darmnay he dista. 
+ - Pan tyanchya samor ek mothi adchan ahe - **youva san-ghatna cha abhaav**.
+ - ani manniya balasaheb shear yanchya ha karyakram 
+  "Lohar Youva  parishad"
 
  - Sanghatna ahe, pan
  - tarun  sah- bhaag nahiye**.
