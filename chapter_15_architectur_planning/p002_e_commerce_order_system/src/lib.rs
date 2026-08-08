@@ -4,12 +4,12 @@ pub mod customer;
 pub mod errors;
 pub mod order_n_cart;
 pub mod payment_n_discount;
-pub mod product;
+pub mod products;
 
-use crate::customer::*;
-use crate::order_n_cart::*;
-use crate::payment_n_discount::*;
-use crate::product::*;
+use crate::customer::{Customer, CustomerID};
+use crate::order_n_cart::{Order, OrderItem};
+use crate::payment_n_discount::{DiscountType, PaymentTransation};
+use crate::products::{Product, ProductID};
 
 #[derive(Debug, Clone)]
 /// Struct:
