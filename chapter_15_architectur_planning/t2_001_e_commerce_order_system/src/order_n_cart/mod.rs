@@ -3,7 +3,8 @@
 use chrono::{DateTime, Utc};
 use rust_decimal::Decimal;
 
-use crate::{CustomerID, DiscountType, ProductID, payment_n_discount::Discount};
+use crate::payment_n_discount::Discount;
+use crate::{CustomerID, DiscountType, ProductID};
 
 //----------------------------------------------------------------------------
 // Why Separate CartItem and OrderItem?
@@ -78,7 +79,7 @@ impl Order {
                     let discount_amount = amount * Decimal::from_f64_retain(percentage / 100.0).unwrap();
                     let final_discount = max_discount.map_or(discount_amount, |max| discount_amount.min(max));
                     amount - final_discount
-                }
+                },
                 DiscountType::Flat { amount: flat_amount } => amount - flat_amount,
                 DiscountType::FreeShipping => amount,
             };
