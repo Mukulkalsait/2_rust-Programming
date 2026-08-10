@@ -1,6 +1,7 @@
 // ===== src/products/service.rs =====
 use chrono::Utc;
-use rust_decimal::{Decimal, prelude::ToPrimitive};
+use rust_decimal::Decimal;
+use rust_decimal::prelude::ToPrimitive;
 use uuid::Uuid;
 
 use super::ProductErrors;
@@ -81,7 +82,9 @@ impl Product {
 
     pub fn update_status(&mut self, new_status: ProductStatus) -> Result<(), ProductErrors> {
         match (self.status, new_status) {
-            (ProductStatus::Discontinued, _) => return Err(ProductErrors::Discoutinued { id: None }),
+            (ProductStatus::Discontinued, _) => {
+                return Err(ProductErrors::Discoutinued { id: None });
+            },
             (ProductStatus::InTransit, ProductStatus::OutOfStock) => self.status = new_status,
             _ => self.status = new_status,
         }
@@ -128,7 +131,7 @@ impl Product {
                     }
                 }
                 Ok(false)
-            }
+            },
         }
     }
 }
